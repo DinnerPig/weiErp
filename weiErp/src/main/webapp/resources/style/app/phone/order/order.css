@@ -1,0 +1,54 @@
+.my_orderAdr {
+	background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 5px;
+    margin: 10px auto;
+    padding: 5px;
+    width: 300px;
+    height: 100%;
+    overflow-y: auto; 
+}
+
+.my_query {
+	width: 320px;
+	margin: 5px auto;
+}
+
+.my_orderList {
+	width: 320px;
+	margin: auto;
+	background: #eee;
+}
+
+.my_orderList div {
+	background: none repeat scroll 0 0 #EEEEEE;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 5px;
+    width: 148px;
+}
+
+.my_orderList ul {
+	padding: 0px;
+}
+
+.my_orderList li {
+	background: rgb(42,42,48);
+	list-style: none;
+	height: 40px;
+	border-top: 1px solid rgb(67,66,72); 
+	border-bottom: 1px solid rgb(17,17,21); 
+}
+
+.my_orderList li div {
+	width: 148px;
+	background: rgb(42,42,48);;
+	height: 38px;
+	line-height: 38px;
+	color: #fff;
+}
+
+.my_todoOrderDetail {
+	background: #eee !important;
+	height: auto !important;
+}

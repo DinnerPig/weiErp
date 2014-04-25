@@ -1,0 +1,22 @@
+.my_smImg {
+	margin: 5px;
+}
+
+.my_imgList {
+	display: inline-block;
+	position: relative;
+}
+
+.my_hoverDelBtn {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	display: none;
+}
+
+.my_productBigImg {
+	display: block;
+	margin: auto;
+	max-width: 540px;
+	max-height:400px;
+}

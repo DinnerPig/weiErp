@@ -1,0 +1,43 @@
+body {
+	background: #CCCC99;
+}
+
+.my_news {
+	width: 300px;
+	height: 180px;
+	border: 5px solid #fff; 
+	margin: 5px auto;
+	background: #FF9933;
+	text-align: center;
+}
+
+.my_loading {
+	width: 86px;
+	height: 70px;
+	background: rgba(200,200,200,0.8);
+	position: fixed;
+	top: 200px;
+	z-index: 9;
+	margin-left: 50%;
+	left: -43px;
+	border-radius: 5px;
+	text-align: center;
+	padding-top: 10px;
+	display: none;
+}
+
+.my_blockBtn {
+	width:300px !important;
+	margin: 10px auto !important;
+	display: block !important;
+}
+
+.my_table td {
+	color: #666 !important;
+	padding: 5px;
+}
+
+.my_error {
+	color: #e67e22;
+	text-align: center;
+}
