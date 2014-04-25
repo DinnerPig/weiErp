@@ -1,0 +1,11 @@
+.my_busiMenuDiv {
+	width: 300px;
+	height: 100%;
+	margin: auto;
+	text-align: center;
+	padding-top: 50px;
+}
+
+.my_busiMenuDiv a {
+	margin-bottom: 30px; 
+}

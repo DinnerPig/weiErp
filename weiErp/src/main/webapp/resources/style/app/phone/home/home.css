@@ -1,0 +1,68 @@
+.my_menuBlock {
+	width: 300px;
+	margin: auto;
+	text-align: center;
+}
+
+.my_menuLeft {
+	background: none repeat scroll 0 0 #FFFFFF;
+    display: block;
+    float: left;
+    margin: 2px;
+    width: 145px;
+    color: #fff;
+}
+
+.my_menuLeft div {
+	background: #660033;
+    display: block;
+    float: left;
+    height: 48px;
+    margin: 1px;
+    width: 70px;
+    color: #fff;
+}
+
+.my_busiMenu {
+	font-size: 20px;
+	line-height: 40px;
+	height: 100px;
+	background: #663300
+}
+
+.my_contactMenu {
+	background: none repeat scroll 0 0 #6699CC;
+    color: #FFFFFF;
+    font-size: 20px;
+    height: 50px;
+    line-height: 45px;
+}
+
+.my_contactRMenu {
+	background: #CCCC00;
+    color: #FFFFFF;
+    font-size: 20px;
+    height: 50px;
+    line-height: 45px;
+}
+
+.my_news img {
+	width: 290px;
+	height: 170px;
+}
+
+.my_bottomLeftMenu {
+	background: #009933;
+	height: 70px;
+}
+
+.my_bottomRightMenu {
+	background: #666600;
+	height: 70px;
+}
+
+.my_bottomMenu {
+	background: #FF9900;
+	height: 70px;
+	width: 294px;
+}
