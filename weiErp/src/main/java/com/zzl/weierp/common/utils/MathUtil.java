@@ -7,7 +7,6 @@ import com.zzl.weierp.common.globalConst.GlobalConst;
 public class MathUtil {
 	public static int getPageTotal(int total, Integer size) {
 
-		
 		int pageTotal = 1;
 
 		/*
