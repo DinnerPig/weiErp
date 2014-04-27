@@ -20,5 +20,5 @@
       	</div>
 	</div>
 </div>
-<p></p>
+<hr>
 <div id="orderList"></div>

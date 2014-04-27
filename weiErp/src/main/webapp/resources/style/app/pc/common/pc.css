@@ -17,3 +17,15 @@
 .my_table td {
 	padding: 5px;
 }
+
+.my_orderTable {
+	margin: 20px 0;
+}
+.my_orderTable td {
+	padding: 5px;
+}
+
+.my_underLine {
+	border-bottom: 3px solid green;
+	display: inline;
+}

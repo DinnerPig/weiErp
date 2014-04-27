@@ -1,29 +1,58 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../../common/taglib.jsp"%>
-<table class="table table-striped">
-	<tr>
-		<th>#</th>
-		<th>订单号</th>
-		<th>数量</th>
-		<th>卖出数量</th>
-		<th>经销商</th>
-		<th>手机</th>
-		<th>地址</th>
-		<th>留言</th>
-		<th>日期</th>
-	</tr>
-	<c:forEach items="${orders}" var="order" varStatus="idx">
+
+<c:forEach items="${orders}" var="order">
+	<h4 class="my_underLine">基本信息</h4>
+	<table class="my_orderTable">
 		<tr>
-			<td>${idx.count}</td>
+			<td>订单号：</td>
 			<td>${order.serial}</td>
+		</tr>
+		<tr>
+			<td>经销商：</td>
 			<td>${order.busi.realname}</td>
+		</tr>
+		<tr>
+			<td>手机：</td>
 			<td>${order.busi.phone}</td>
+		</tr>
+		<tr>
+			<td>收货地址：</td>
 			<td>${order.address}</td>
+		</tr>
+		<tr>
+			<td>留言：</td>
 			<td>${order.note}</td>
+		</tr>
+		<tr>
+			<td>下单日期：</td>
 			<td><fmt:formatDate value="${order.createTime}" pattern="yyyy-MM-dd HH:mm"/></td>
 		</tr>
-	</c:forEach>
-</table>
+	</table>
+	<h4 class="my_underLine">订单产品</h4>
+	<table class="table table-striped my_orderTable">
+		<tr>
+			<th>#</th>
+			<th>礼品名</th>
+			<th>单价</th>
+			<th>数量</th>
+			<th>卖出数量</th>
+			<th>合计</th>
+		</tr>
+		<c:forEach items="${order.products}" var="orderProduct" varStatus="idx">
+			<tr>
+				<td>${idx.count}</td>
+				<td>${orderProduct.product.name}</td>
+				<td>${orderProduct.product.price}</td>
+				<td>${orderProduct.amount}</td>
+				<td style="color:green;">${orderProduct.outAmount}</td>
+				<td>${orderProduct.product.price * orderProduct.amount}&nbsp;元</td>
+			</tr>
+		</c:forEach>
+	</table>
+	<hr>
+</c:forEach>
+
 
 <%@ include file="../page/page.jsp"%>
