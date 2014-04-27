@@ -83,17 +83,4 @@ var order = {
         $("#orderDiv").css("-webkit-transform", "translate3d(500px, 0px, 0px)");
         $("#orderDiv").css("-moz-transform", "translate3d(500px, 0px, 0px)");
 	},
-	
-	// 更新卖出数量
-	updateOutAmount : function(id) {
-	    var outAmount = $("#outAmount").val().trim();
-	    $.post("phone/order/update/" + id, {outAmount : outAmount}, function(result) {
-	        if(result.status == 1) {
-	            alert("修改卖出数量成功");
-	        }
-	        else {
-	            alert("修改卖出数量失败");
-	        }
-	    }, "json");
-	}
 };

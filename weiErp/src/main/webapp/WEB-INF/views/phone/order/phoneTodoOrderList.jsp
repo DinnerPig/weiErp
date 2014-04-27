@@ -8,18 +8,20 @@
 	</li>
 	<li class="my_todoOrderDetail">
 		<table class="my_table">
-			<tr>
-				<td>礼品名：</td>
-				<td>${order.product.name}</td>
-			</tr>
-			<tr>
-				<td>单价：</td>
-				<td>${order.product.price}</td>
-			</tr>
-			<tr>
-				<td>数量：</td>
-				<td>${order.amount}</td>
-			</tr>
+			<c:forEach items="${order.products}" var="orderProduct">
+				<tr>
+					<td>礼品名：</td>
+					<td>${orderProduct.product.name}</td>
+				</tr>
+				<tr>
+					<td>单价：</td>
+					<td>${orderProduct.product.price}</td>
+				</tr>
+				<tr>
+					<td>数量：</td>
+					<td>${orderProduct.amount}</td>
+				</tr>
+			</c:forEach>
 			<tr>
 				<td style="width:85px;">收货地址：</td>
 				<td>${order.address}</td>

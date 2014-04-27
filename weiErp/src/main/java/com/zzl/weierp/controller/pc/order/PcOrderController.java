@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zzl.weierp.common.globalConst.GlobalConst;
+import com.zzl.weierp.common.globalConst.StatusCode;
+import com.zzl.weierp.common.utils.WebUtil;
 import com.zzl.weierp.domain.Busi;
+import com.zzl.weierp.domain.ProductOrder;
 import com.zzl.weierp.service.pc.order.PcOrderService;
 
 @RequestMapping("pc/order")
@@ -78,7 +81,7 @@ public class PcOrderController {
 	 */
 	@RequestMapping(value = "/done/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public String done(@PathVariable Long id, HttpSession session) {
+	public String done(@PathVariable Long id, @RequestParam String expressSerial, HttpSession session) {
 
 		// check session
 //		Long userId = (Long) SessionUtil.getUserId(session);
@@ -87,7 +90,34 @@ public class PcOrderController {
 //		}
 
 		// send
-		return pcOrderService.done(id);
+		return pcOrderService.done(id, expressSerial);
 	}
+	
+	/**
+	 * 改为发货状态
+	 * 
+	 * @param model
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value = "/remove/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public String remove(@PathVariable Long id, HttpSession session) {
+
+		// check session
+//		Long userId = (Long) SessionUtil.getUserId(session);
+//		if (null == userId) {
+//			return "common/timeout";
+//		}
+
+		// remove
+		ProductOrder order = ProductOrder.findProductOrder(id);
+		if(null != order) {
+			order.remove();
+		}
+		
+		return WebUtil.toJsonString(StatusCode.STATUS_SUCCESS);
+	}
+
 
 }

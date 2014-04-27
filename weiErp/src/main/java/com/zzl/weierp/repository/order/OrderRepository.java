@@ -74,8 +74,11 @@ public class OrderRepository {
 		
 		String sql = "select p from ProductOrder p where p.status = :status and p.serial like '%" + keyword + "%'";
 		if(null != busiId) {
-			sql += "and p.busi.id = :busiId";
+			sql += " and p.busi.id = :busiId";
 		}
+		
+		// order by date
+		sql += " order by p.createTime desc";
 		
 		Query query = ProductOrder.entityManager().createQuery(sql);
 		query.setParameter("status", status);

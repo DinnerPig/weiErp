@@ -48,4 +48,8 @@ public class ProductOrder {
      */
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "productOrder")
     private Set<OrderProduct> products = new HashSet<OrderProduct>();
+
+    /**
+     */
+    private String expressSerial;
 }

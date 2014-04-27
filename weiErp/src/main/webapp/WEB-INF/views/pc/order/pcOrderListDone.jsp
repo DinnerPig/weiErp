@@ -6,6 +6,10 @@
 	<h4 class="my_underLine">基本信息</h4>
 	<table class="my_orderTable">
 		<tr>
+			<td>快递单号：</td>
+			<td>${order.expressSerial}</td>
+		</tr>
+		<tr>
 			<td>订单号：</td>
 			<td>${order.serial}</td>
 		</tr>
@@ -51,6 +55,9 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<h4>
+		<a href="javascript:void(0)" onclick="order.remove(${order.id}, this)">删除订单&nbsp;<i class="fa fa-trash-o"></i></a>
+	</h4>
 	<hr>
 </c:forEach>
 

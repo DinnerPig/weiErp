@@ -67,4 +67,12 @@ privileged aspect ProductOrder_Roo_JavaBean {
         this.products = products;
     }
     
+    public String ProductOrder.getExpressSerial() {
+        return this.expressSerial;
+    }
+    
+    public void ProductOrder.setExpressSerial(String expressSerial) {
+        this.expressSerial = expressSerial;
+    }
+    
 }

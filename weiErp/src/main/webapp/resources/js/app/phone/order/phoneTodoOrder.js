@@ -14,19 +14,8 @@ var phoneTodoOrder = {
 			
 			$("#orderList").append(result);
 			
-			// 监听查看详情事件
-			phoneTodoOrder.listenDetail();
-			
 		}, "html");
 	},
-	
-	// 监听查询详情事件
-	listenDetail : function() {
-		$("div.my_products").contents().find("li").click(function() {
-			product.detail($(this).attr("pid"));
-		});
-	}
-
 };
 
 $(document).ready(function(){

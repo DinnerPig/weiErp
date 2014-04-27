@@ -17,9 +17,6 @@ var phoneDoneOrder = {
             // 监听查看更多事件
             phoneDoneOrder.listenMore();
             
-            // 监听查看产品详情事件
-            phoneDoneOrder.listenDetail();
-            
         }, "html");
     },
     
@@ -61,13 +58,6 @@ var phoneDoneOrder = {
         // 查询
         phoneDoneOrder.queryList(params);
     },
-    
-    // 监听查询产品详情事件
-    listenDetail : function() {
-        $("#orderList").children("li").click(function() {
-            location = "phone/order/detail/" + $(this).attr("orderid");
-        });
-    }
 };
 
 $(document).ready(function(){

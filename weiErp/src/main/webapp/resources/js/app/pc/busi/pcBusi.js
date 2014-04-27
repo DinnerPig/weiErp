@@ -43,6 +43,9 @@ var busi = {
                     myUtil.bsAlert("保存成功", 1);
                     busi.queryList();
                 }
+                else if(result.status == 1007) {
+                    myUtil.bsAlert("该用户名已存在", 3);
+                }
                 else {
                     myUtil.bsAlert("保存失败", 2);
                 }

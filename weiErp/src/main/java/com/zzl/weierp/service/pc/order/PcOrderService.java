@@ -44,7 +44,7 @@ public class PcOrderService {
 	 * @param id
 	 * @return
 	 */
-	public String done(Long id) {
+	public String done(Long id, String expressSerial) {
 		
 		// check param
 		if(null == id) {
@@ -57,6 +57,10 @@ public class PcOrderService {
 			WebUtil.toJsonString(GlobalConst.STATUS_FAIL);
 		}
 		order.setStatus(GlobalConst.ORDER_STATUS_DONE);
+		
+		// add express serial
+		order.setExpressSerial(expressSerial);
+		
 		order.persist();
 		
 		// return json

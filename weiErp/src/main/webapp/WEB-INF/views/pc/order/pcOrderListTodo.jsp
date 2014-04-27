@@ -49,7 +49,11 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<h4><a href="javascript:void(0)" onclick="order.done(${order.id}, this)">确认送货&nbsp;<i class="fa fa-truck"></i></a></h4>
+	<h4>
+		<a href="javascript:void(0)" onclick="order.done(${order.id}, this)">确认送货&nbsp;<i class="fa fa-truck"></i></a>
+		&emsp;
+		<a href="javascript:void(0)" onclick="order.remove(${order.id}, this)">删除订单&nbsp;<i class="fa fa-trash-o"></i></a>
+	</h4>
 	<hr>
 </c:forEach>
 

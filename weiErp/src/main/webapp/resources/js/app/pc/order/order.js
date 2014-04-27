@@ -82,9 +82,11 @@ var order = {
     
     // 改为发货状态
     done : function(id) {
-        if(confirm("确定发货吗？")) {
+        var expressSerial = prompt("请输入快递单号");
+        
+        if(expressSerial !== null) {
             $("#pcLoading").show();
-            $.get("pc/order/done/" + id, function(result) {
+            $.get("pc/order/done/" + id, {expressSerial:expressSerial}, function(result) {
                 $("#pcLoading").hide();
                 
                 if(result.status == 1) {
@@ -97,5 +99,20 @@ var order = {
             }, "json");
         }
     },
+    
+    // 删除
+    remove : function(id) {
+        if(confirm("确定要删除吗？")) {
+            $.get("pc/order/remove/" + id, function(result) {
+                if(result.status == 1) {
+                    alert("删除成功");
+                    order.queryList();
+                }
+                else {
+                    alert("删除失败");
+                }
+            }, "json");
+        }
+    }
     
 };

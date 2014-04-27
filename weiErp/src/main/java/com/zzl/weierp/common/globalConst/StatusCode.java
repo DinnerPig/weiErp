@@ -7,7 +7,7 @@ package com.zzl.weierp.common.globalConst;
  * 
  */
 public class StatusCode {
-	
+
 	// 成功
 	public static final int STATUS_SUCCESS = 1;
 
@@ -34,5 +34,8 @@ public class StatusCode {
 
 	// 文件操作失败
 	public static final int STATUS_FILE_ERROR = 1006;
+
+	// 已存在
+	public static final int STATUS_REPEAT_EXIST = 1007;
 
 }

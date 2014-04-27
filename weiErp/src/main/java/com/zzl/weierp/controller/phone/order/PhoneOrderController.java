@@ -13,7 +13,6 @@ import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,7 +24,6 @@ import com.zzl.weierp.common.utils.SessionUtil;
 import com.zzl.weierp.common.utils.WebUtil;
 import com.zzl.weierp.domain.Busi;
 import com.zzl.weierp.domain.Product;
-import com.zzl.weierp.domain.ProductOrder;
 import com.zzl.weierp.domain.vo.ShopCarProduct;
 import com.zzl.weierp.service.interfaces.order.IProductOrderService;
 import com.zzl.weierp.service.pc.order.PcOrderService;
@@ -111,33 +109,6 @@ public class PhoneOrderController {
 	}
 	
 	/**
-	 * 修改订单卖出数量
-	 * @param order
-	 * @param session
-	 * @return
-	 */
-	@RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
-	@ResponseBody
-	public String update(@PathVariable Long id, HttpSession session, @RequestParam Integer outAmount) {
-		
-		// check session
-		Long userId = SessionUtil.getUserId(session);
-		if(null == userId) {
-			return WebUtil.toJsonString(GlobalConst.STATUS_SESSION_TIMEOUT);
-		}
-		
-		ProductOrder order = ProductOrder.findProductOrder(id);
-		if(null == order) {
-			return WebUtil.toJsonString(GlobalConst.STATUS_FAIL);
-		}
-		
-//		order.setOutAmount(outAmount);
-		order.persist();
-		
-		return WebUtil.toJsonString(GlobalConst.STATUS_SUCCESS);
-	}
-	
-	/**
 	 * 查询所有未发货的订单
 	 * @param order
 	 * @param session
@@ -186,27 +157,6 @@ public class PhoneOrderController {
 		
 		return "phone/order/phoneDoneOrderList";
 		
-	}
-	
-	/**
-	 * 查询所有未发货的订单
-	 * @param order
-	 * @param session
-	 * @return
-	 */
-	@RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
-	public String detail(Model model, HttpSession session, @PathVariable Long id) {
-		
-		// check session
-		Long userId = SessionUtil.getUserId(session);
-		if(null == userId) {
-			return "phone/timeout/timeout";
-		}
-		
-		// set model
-		model.addAttribute("order", ProductOrder.findProductOrder(id));
-		
-		return "phone/order/phoneOrderDetail";
 	}
 	
 	/**

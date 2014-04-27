@@ -138,3 +138,8 @@ exit
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-26 16:36:09
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-26 20:55:03
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-26 23:02:24
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-27 11:22:48
+focus --class ~.domain.ProductOrder
+field string --fieldName expressSerial
+quit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-27 11:24:01

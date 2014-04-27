@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import com.zzl.weierp.common.globalConst.GlobalConst;
 import com.zzl.weierp.domain.Busi;
-import com.zzl.weierp.domain.Product;
 
 @Repository
 public class BusiRepository {
@@ -38,10 +37,32 @@ public class BusiRepository {
 			size = GlobalConst.DEFAULT_PAGE_LIMIT;
 		}
 		
-		Query query = Product.entityManager().createQuery("select b from Busi b");
+		Query query = Busi.entityManager().createQuery("select b from Busi b");
 		
 		query.setFirstResult(page * size);
 		query.setMaxResults(size);
 		return query.getResultList();
+	}
+	
+	/**
+	 * @param id
+	 * @return
+	 */
+	public Long countForRepeat(Long id, String username) {
+		String sql = "select count(*) from Busi b where b.username = :username";
+		
+		// exclude id
+		if(null != id) {
+			sql += " AND b.id != :id";
+		}
+		
+		Query query = Busi.entityManager().createQuery(sql);
+		
+		query.setParameter("username", username);
+		if(null != id) {
+			query.setParameter("id", id);
+		}
+		
+		return (Long) query.getSingleResult();
 	}
 }

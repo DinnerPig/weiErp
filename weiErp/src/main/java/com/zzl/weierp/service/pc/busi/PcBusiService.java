@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
 import com.zzl.weierp.common.globalConst.GlobalConst;
+import com.zzl.weierp.common.globalConst.StatusCode;
 import com.zzl.weierp.common.utils.WebUtil;
 import com.zzl.weierp.domain.Busi;
 import com.zzl.weierp.repository.busi.BusiRepository;
@@ -50,6 +51,12 @@ public class PcBusiService {
 		// check param
 		if(null == busi) {
 			return WebUtil.toJsonString(GlobalConst.STATUS_FAIL);
+		}
+
+		// check repeat
+		long num = busiRepository.countForRepeat(busi.getId(), busi.getUsername());
+		if(num > 0) {
+			return WebUtil.toJsonString(StatusCode.STATUS_REPEAT_EXIST);
 		}
 		
 		// add
