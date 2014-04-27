@@ -26,7 +26,7 @@ public class WebUtil {
      * @param statusCode
      * @return
      */
-    public static String toJson(int statusCode) {
+    public static String toJsonString(int statusCode) {
     	JSONObject result = new JSONObject();
     	result.put("status", statusCode);
     	return result.toString();

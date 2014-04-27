@@ -22,8 +22,8 @@
 		<link href="resources/style/app/phone/product/detail.css" rel="stylesheet">
 		<link href="resources/style/app/phone/order/order.css" rel="stylesheet">
 	</head>
-	
 	<body>
+			
 		<div class="my_detailBlock">
 			<div id="detailBlock">
 				<div class="my_productImg">
@@ -70,7 +70,9 @@
 	      		</div>
       		</div>
 			
-			<button class="btn btn-primary my_blockBtn" id="orderBtn" pid="${product.id}">开始下单</button>
+			<button class="btn btn-primary my_blockBtn" id="shopCarBtn" pid="${product.id}">加入购物车</button>
+			<button class="btn btn-success my_blockBtn" id="orderBtn">去结算</button>
+			<a class="btn btn-warning my_blockBtn" href="phone/product/show/${product.type.id}">返回</a>
 			
 			<!-- 订单 -->
 			<div id="orderDiv" class="my_orderDiv"></div>

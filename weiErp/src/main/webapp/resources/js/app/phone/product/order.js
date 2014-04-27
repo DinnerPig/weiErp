@@ -4,28 +4,46 @@ var order = {
 		
 	    if(confirm("确定要提交订单吗？")) {
 	    
-	        var model = {
+	        var json = {
                 serial : $("#serial").html(),
-                "product.id" : pid,
-                amount : $("#amount").val().trim(),
                 address : $("#address").val().trim(),
                 note : $("#note").val()
 	        };
 	        
-	        if(order.check(model)) {
-	            order.realSubmit(model);
+	        // 订单产品
+	        var products = [];
+	        $("tr[name=product]").each(function() {
+	            var product = {
+	                id : $(this).attr("pid"),
+	                amount : $(this).contents().find("input[name=amount]").val()
+	            };
+	            products.push(product);
+	        });
+	        
+	        json.products = products;
+	        
+	        if(order.check(json)) {
+	            order.realSubmit(json);
 	        }
 	    }
 	},
 	
 	// 校验参数
-	check : function(model) {
-	    if(!/^[0-9]+$/.test(model.amount)) {
-	        alert("产品数量必须为数字", 3);
-	        return false;
+	check : function(json) {
+	    
+	    if(json.products.length <= 0) {
+	        alert("您还没有选择礼品");
+	        return;
 	    }
 	    
-	    if(model.address === "") {
+	    for(var i=0; i<json.products.length; i++) {
+	        if(!/^[0-9]+$/.test(json.products[i].amount)) {
+	            alert("产品数量必须为数字", 3);
+	            return false;
+	        }
+	    }
+	    
+	    if(json.address === "") {
 	        alert("送货地址不能为空", 3);
             return false;
 	    }
@@ -34,16 +52,26 @@ var order = {
 	},
 	
 	// 执行提交
-	realSubmit : function(model) {
+	realSubmit : function(json) {
 	    myUtil.showLoading();
-        $.post("phone/order/add", model, function(result) {
-            myUtil.hideLoading();
-            if(result.status == 1) {
-                
-                order.back();
-                alert("提交成功");
-            }
-        }, "json");
+	    
+	    $.ajax({
+	        url : "phone/order/create",
+	        data : JSON.stringify(json),
+	        type : "POST",
+	        contentType : "application/json",
+	        dataType : "json",
+	        success : function(result) {
+	            myUtil.hideLoading();
+	            if(result.status == 1) {
+	                order.back();
+	                alert("订单提交成功");
+	            }
+	            else {
+	                alert("订单提交失败");
+	            }
+	        }
+	    });
 	},
 	
 	// 返回详情

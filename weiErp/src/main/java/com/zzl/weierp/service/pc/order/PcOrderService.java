@@ -48,19 +48,19 @@ public class PcOrderService {
 		
 		// check param
 		if(null == id) {
-			return WebUtil.toJson(GlobalConst.STATUS_FAIL);
+			return WebUtil.toJsonString(GlobalConst.STATUS_FAIL);
 		}
 		
 		// change status
 		ProductOrder order = ProductOrder.findProductOrder(id);
 		if(null == order) {
-			WebUtil.toJson(GlobalConst.STATUS_FAIL);
+			WebUtil.toJsonString(GlobalConst.STATUS_FAIL);
 		}
 		order.setStatus(GlobalConst.ORDER_STATUS_DONE);
 		order.persist();
 		
 		// return json
-		return WebUtil.toJson(GlobalConst.STATUS_SUCCESS);
+		return WebUtil.toJsonString(GlobalConst.STATUS_SUCCESS);
 	}
 
 }

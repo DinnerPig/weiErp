@@ -2,24 +2,21 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../../common/taglib.jsp"%>
 <div class="my_orderAdr">
-	<h4>订单信息</h4>
+	<h4>订单产品</h4>
+	<div>订单号：<span id="serial"></span></div>
 	<table class="table table-bordered my_table">
 		<tr>
-			<td>订单号</td>
-			<td id="serial"></td>
+			<th>名称</th>
+			<th>单价</th>
+			<th>数量</th>
 		</tr>
-		<tr>
-			<td>名称</td>
-			<td>${product.name}</td>
-		</tr>
-		<tr>
-			<td>单价</td>
-			<td>${product.price}</td>
-		</tr>
-		<tr>
-			<td>数量</td>
-			<td><input class="form-control" type="tel" id="amount"></td>
-		</tr>
+		<c:forEach items="${products}" var="product">
+			<tr name="product" pid="${product.id}">
+				<td name="name">${product.name}</td>
+				<td name="price">${product.price}</td>
+				<td><input class="form-control" type="tel" value="${product.amount}" name="amount"></td>
+			</tr>
+		</c:forEach>
 	</table>
 </div>
 
@@ -36,5 +33,5 @@
 		</tr>
 	</table>
 </div>
-<button class="btn btn-warning my_blockBtn" id="submitBtn" onclick="order.submit(${product.id})">提交订单</button>
+<button class="btn btn-warning my_blockBtn" id="submitBtn" onclick="order.submit()">提交订单</button>
 <button class="btn btn-danger my_blockBtn" onclick="order.back()">返回详情</button>

@@ -1,11 +1,20 @@
 package com.zzl.weierp.controller.phone.order;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
 import javax.servlet.http.HttpSession;
+
+import net.sf.json.JSONObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,7 +23,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.zzl.weierp.common.globalConst.GlobalConst;
 import com.zzl.weierp.common.utils.SessionUtil;
 import com.zzl.weierp.common.utils.WebUtil;
+import com.zzl.weierp.domain.Busi;
+import com.zzl.weierp.domain.Product;
 import com.zzl.weierp.domain.ProductOrder;
+import com.zzl.weierp.domain.vo.ShopCarProduct;
+import com.zzl.weierp.service.interfaces.order.IProductOrderService;
 import com.zzl.weierp.service.pc.order.PcOrderService;
 import com.zzl.weierp.service.phone.order.PhoneOrderService;
 
@@ -28,23 +41,73 @@ public class PhoneOrderController {
 	@Autowired
 	private PcOrderService pcOrderService;
 	
+	@Autowired
+	private IProductOrderService productOrderService;
+	
 	/**
 	 * 新增订单
 	 * @param order
 	 * @param session
 	 * @return
 	 */
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	@ResponseBody
-	public String add(@ModelAttribute ProductOrder order, HttpSession session) {
+	public String create(@RequestBody String json, HttpSession session) {
 		
 		// check session
 		Long userId = SessionUtil.getUserId(session);
 		if(null == userId) {
-			return WebUtil.toJson(GlobalConst.STATUS_SESSION_TIMEOUT);
+			return WebUtil.toJsonString(GlobalConst.STATUS_SESSION_TIMEOUT);
 		}
 		
-		return phoneOrderService.add(order, userId);
+		// pack query params
+		JSONObject params = JSONObject.fromObject(json);
+		params.put("busiId", userId);
+		
+		return productOrderService.create(params.toString());
+	}
+	
+	/**
+	 * 添加到购物车
+	 * @param order
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value = "/shopCar", method = RequestMethod.POST)
+	@ResponseBody
+	public String shopCar(@RequestParam Long productId, @RequestParam Integer amount, HttpSession session) {
+		
+		// check session
+		Long userId = SessionUtil.getUserId(session);
+		if(null == userId) {
+			return WebUtil.toJsonString(GlobalConst.STATUS_SESSION_TIMEOUT);
+		}
+		
+		Object products = session.getAttribute("products");
+		
+		if(null == products) {
+			Map<Long, Integer> map = new HashMap<Long, Integer>();
+			map.put(productId, amount);
+			session.setAttribute("products", map);
+		}
+		
+		else {
+			@SuppressWarnings("unchecked")
+			Map<Long, Integer> map = (Map<Long, Integer>) products;
+			
+			// exist
+			if(map.containsKey(productId)) {
+				int oriAmount = map.get(productId);
+				map.put(productId, oriAmount + amount);
+			}
+			
+			// no exist
+			else {
+				map.put(productId, amount);
+			}
+		}
+		
+		return WebUtil.toJsonString(GlobalConst.STATUS_SUCCESS);
 	}
 	
 	/**
@@ -60,18 +123,18 @@ public class PhoneOrderController {
 		// check session
 		Long userId = SessionUtil.getUserId(session);
 		if(null == userId) {
-			return WebUtil.toJson(GlobalConst.STATUS_SESSION_TIMEOUT);
+			return WebUtil.toJsonString(GlobalConst.STATUS_SESSION_TIMEOUT);
 		}
 		
 		ProductOrder order = ProductOrder.findProductOrder(id);
 		if(null == order) {
-			return WebUtil.toJson(GlobalConst.STATUS_FAIL);
+			return WebUtil.toJsonString(GlobalConst.STATUS_FAIL);
 		}
 		
-		order.setOutAmount(outAmount);
+//		order.setOutAmount(outAmount);
 		order.persist();
 		
-		return WebUtil.toJson(GlobalConst.STATUS_SUCCESS);
+		return WebUtil.toJsonString(GlobalConst.STATUS_SUCCESS);
 	}
 	
 	/**
@@ -144,5 +207,46 @@ public class PhoneOrderController {
 		model.addAttribute("order", ProductOrder.findProductOrder(id));
 		
 		return "phone/order/phoneOrderDetail";
+	}
+	
+	/**
+	 * 进入订单结算页面
+	 * @param order
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value = "/page", method = RequestMethod.GET)
+	public String order(Model model, HttpSession session) {
+		
+		// check session
+		Long userId = SessionUtil.getUserId(session);
+		if(null == userId) {
+			return "phone/timeout/timeout";
+		}
+		
+		List<ShopCarProduct> list = new ArrayList<ShopCarProduct>();
+		Object products = session.getAttribute("products");
+		if(null != products) {
+			@SuppressWarnings("unchecked")
+			Map<Long, Integer> map = (Map<Long, Integer>) products;
+			Iterator<Entry<Long, Integer>> iter = map.entrySet().iterator();
+			while(iter.hasNext()) {
+				ShopCarProduct product = new ShopCarProduct();
+				Entry<Long, Integer> entry = iter.next();
+				Long id = entry.getKey();
+				product.setId(id);
+				product.setAmount(entry.getValue());
+				Product temp = Product.findProduct(id);
+				product.setName(temp.getName());
+				product.setPrice(temp.getPrice());
+				
+				list.add(product);
+			}
+		}
+		// set model
+		model.addAttribute("products", list);
+		model.addAttribute("busi", Busi.findBusi(userId));
+		
+		return "phone/product/order";
 	}
 }

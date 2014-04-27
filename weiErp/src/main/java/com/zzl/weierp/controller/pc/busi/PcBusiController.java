@@ -100,13 +100,13 @@ public class PcBusiController {
 		// check exist in order
 		List<ProductOrder> orders = ProductOrder.findProductOrdersByBusi(Busi.findBusi(id)).getResultList();
 		if(null != orders && !orders.isEmpty()) {
-			return WebUtil.toJson(GlobalConst.STATUS_CANNOT_DELETE);
+			return WebUtil.toJsonString(GlobalConst.STATUS_CANNOT_DELETE);
 		}
 		
 		// delete product
 		Busi.findBusi(id).remove();
 		
-		return WebUtil.toJson(GlobalConst.STATUS_SUCCESS);
+		return WebUtil.toJsonString(GlobalConst.STATUS_SUCCESS);
 	}
 	
 }

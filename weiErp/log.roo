@@ -124,3 +124,17 @@ focus --class ~.domain.ProductOrder
 field number --fieldName outAmount --type int
 quit
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-18 21:58:29
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-26 15:13:51
+focus --class ~.domain.ProductOrder
+entity jpa --class ~.domain.OrderProduct --testAutomatically 
+field reference --fieldName product --type ~.domain.Product --cardinality ONE_TO_ONE 
+field number --fieldName amount --type int
+field number --fieldName outAmount --type int
+// [failed] field reference --fieldName order --type ~.domain.ProductOrder --cardinality MANY_TO_ONE 
+field reference --fieldName productOrder --type ~.domain.ProductOrder --cardinality MANY_TO_ONE 
+focus --class ~.domain.ProductOrder
+field set --fieldName products --type ~.domain.OrderProduct --cardinality ONE_TO_MANY --mappedBy productOrder
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-26 16:36:09
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-26 20:55:03
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-26 23:02:24

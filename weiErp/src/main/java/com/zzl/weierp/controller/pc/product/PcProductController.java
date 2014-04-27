@@ -123,7 +123,7 @@ public class PcProductController {
 		// 2.delete product
 		Product.findProduct(id).remove();
 		
-		return WebUtil.toJson(GlobalConst.STATUS_SUCCESS);
+		return WebUtil.toJsonString(GlobalConst.STATUS_SUCCESS);
 	}
 	
 }

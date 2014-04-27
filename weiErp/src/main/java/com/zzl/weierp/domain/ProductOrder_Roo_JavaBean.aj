@@ -4,9 +4,10 @@
 package com.zzl.weierp.domain;
 
 import com.zzl.weierp.domain.Busi;
-import com.zzl.weierp.domain.Product;
+import com.zzl.weierp.domain.OrderProduct;
 import com.zzl.weierp.domain.ProductOrder;
 import java.util.Date;
+import java.util.Set;
 
 privileged aspect ProductOrder_Roo_JavaBean {
     
@@ -42,22 +43,6 @@ privileged aspect ProductOrder_Roo_JavaBean {
         this.note = note;
     }
     
-    public Product ProductOrder.getProduct() {
-        return this.product;
-    }
-    
-    public void ProductOrder.setProduct(Product product) {
-        this.product = product;
-    }
-    
-    public int ProductOrder.getAmount() {
-        return this.amount;
-    }
-    
-    public void ProductOrder.setAmount(int amount) {
-        this.amount = amount;
-    }
-    
     public Busi ProductOrder.getBusi() {
         return this.busi;
     }
@@ -74,12 +59,12 @@ privileged aspect ProductOrder_Roo_JavaBean {
         this.status = status;
     }
     
-    public int ProductOrder.getOutAmount() {
-        return this.outAmount;
+    public Set<OrderProduct> ProductOrder.getProducts() {
+        return this.products;
     }
     
-    public void ProductOrder.setOutAmount(int outAmount) {
-        this.outAmount = outAmount;
+    public void ProductOrder.setProducts(Set<OrderProduct> products) {
+        this.products = products;
     }
     
 }

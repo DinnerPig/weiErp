@@ -5,8 +5,6 @@
 	<tr>
 		<th>#</th>
 		<th>订单号</th>
-		<th>产品名</th>
-		<th>单价</th>
 		<th>数量</th>
 		<th>卖出数量</th>
 		<th>经销商</th>
@@ -19,10 +17,6 @@
 		<tr>
 			<td>${idx.count}</td>
 			<td>${order.serial}</td>
-			<td>${order.product.name}</td>
-			<td>${order.product.price}</td>
-			<td>${order.amount}</td>
-			<td>${order.outAmount}</td>
 			<td>${order.busi.realname}</td>
 			<td>${order.busi.phone}</td>
 			<td>${order.address}</td>

@@ -16,7 +16,6 @@
 <link href="resources/js/plugin/bootstrap3/css/bootstrap.css" rel="stylesheet">
 <link href="resources/style/plugin/font-awesome-4.0.1/css/font-awesome.min.css" rel="stylesheet">
 <link href="resources/style/app/pc/common/pc.css" rel="stylesheet">
-<link href="resources/style/app/pc/main/main.css" rel="stylesheet">
 <link href="resources/style/app/pc/product/pcProduct.css" rel="stylesheet">
 </head>
 <body>
@@ -35,8 +34,8 @@
             </div>
         </div>
     </nav>
-    <div style="text-align: center;margin-top: 40px;">
-        <div class="row">
+    <div style="text-align: center;margin-top: 40px;padding:0">
+        <div class="row" style="margin: 0">
             <div class="col-md-2">
                 <div class="panel-group" id="accordion">
                   <div class="panel panel-default" style="border-top:none;">

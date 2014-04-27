@@ -115,29 +115,5 @@ public class PhoneProductController {
 
 		return "phone/product/detail";
 	}
-	
-	/**
-	 * 进入订单页面
-	 * 
-	 * @param model
-	 * @param session
-	 * @return
-	 */
-	@RequestMapping(value = "/order/{id}", method = RequestMethod.GET)
-	public String order(Model model, HttpSession session,
-			@PathVariable Long id) {
-
-		// 1.check session
-		Long userId = SessionUtil.getUserId(session);
-		if (null == userId) {
-			return "phone/timeout/timeout";
-		}
-
-		// 2.execute query
-		model.addAttribute("product", Product.findProduct(id));
-		model.addAttribute("busi", Busi.findBusi(userId));
-
-		return "phone/product/order";
-	}
 
 }

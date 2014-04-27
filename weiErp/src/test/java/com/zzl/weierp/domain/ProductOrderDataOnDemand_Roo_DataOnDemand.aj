@@ -4,7 +4,6 @@
 package com.zzl.weierp.domain;
 
 import com.zzl.weierp.domain.BusiDataOnDemand;
-import com.zzl.weierp.domain.ProductDataOnDemand;
 import com.zzl.weierp.domain.ProductOrder;
 import com.zzl.weierp.domain.ProductOrderDataOnDemand;
 import java.security.SecureRandom;
@@ -31,16 +30,11 @@ privileged aspect ProductOrderDataOnDemand_Roo_DataOnDemand {
     @Autowired
     BusiDataOnDemand ProductOrderDataOnDemand.busiDataOnDemand;
     
-    @Autowired
-    ProductDataOnDemand ProductOrderDataOnDemand.productDataOnDemand;
-    
     public ProductOrder ProductOrderDataOnDemand.getNewTransientProductOrder(int index) {
         ProductOrder obj = new ProductOrder();
         setAddress(obj, index);
-        setAmount(obj, index);
         setCreateTime(obj, index);
         setNote(obj, index);
-        setOutAmount(obj, index);
         setSerial(obj, index);
         setStatus(obj, index);
         return obj;
@@ -51,11 +45,6 @@ privileged aspect ProductOrderDataOnDemand_Roo_DataOnDemand {
         obj.setAddress(address);
     }
     
-    public void ProductOrderDataOnDemand.setAmount(ProductOrder obj, int index) {
-        int amount = index;
-        obj.setAmount(amount);
-    }
-    
     public void ProductOrderDataOnDemand.setCreateTime(ProductOrder obj, int index) {
         Date createTime = new GregorianCalendar(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH), Calendar.getInstance().get(Calendar.HOUR_OF_DAY), Calendar.getInstance().get(Calendar.MINUTE), Calendar.getInstance().get(Calendar.SECOND) + new Double(Math.random() * 1000).intValue()).getTime();
         obj.setCreateTime(createTime);
@@ -64,11 +53,6 @@ privileged aspect ProductOrderDataOnDemand_Roo_DataOnDemand {
     public void ProductOrderDataOnDemand.setNote(ProductOrder obj, int index) {
         String note = "note_" + index;
         obj.setNote(note);
-    }
-    
-    public void ProductOrderDataOnDemand.setOutAmount(ProductOrder obj, int index) {
-        int outAmount = index;
-        obj.setOutAmount(outAmount);
     }
     
     public void ProductOrderDataOnDemand.setSerial(ProductOrder obj, int index) {

@@ -28,20 +28,20 @@ public class PhoneOrderService {
 	public String add(ProductOrder order, Long userId) {
 		
 		// check param
-		if(null == userId || null == order || null == order.getProduct() || StringUtils.isBlank(order.getAddress()) || order.getAmount() <= 0) {
-			return WebUtil.toJson(GlobalConst.STATUS_FAIL);
-		}
+//		if(null == userId || null == order || null == order.getProduct() || StringUtils.isBlank(order.getAddress()) || order.getAmount() <= 0) {
+//			return WebUtil.toJsonString(GlobalConst.STATUS_FAIL);
+//		}
 		
 		order.setCreateTime(new Date());
 		order.setBusi(Busi.findBusi(userId));
-		order.setProduct(Product.findProduct(order.getProduct().getId()));
-		order.setStatus(GlobalConst.ORDER_STATUS_TODO);
-		order.setOutAmount(0);
+//		order.setProduct(Product.findProduct(order.getProduct().getId()));
+//		order.setStatus(GlobalConst.ORDER_STATUS_TODO);
+//		order.setOutAmount(0);
 		
 		// execute add
 		order.persist();
 		
-		return WebUtil.toJson(GlobalConst.STATUS_SUCCESS);
+		return WebUtil.toJsonString(GlobalConst.STATUS_SUCCESS);
 	}
 
 	/**

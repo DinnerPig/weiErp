@@ -7,6 +7,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.ManyToOne;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
 
 @RooJavaBean
 @RooToString
@@ -34,15 +38,6 @@ public class ProductOrder {
     /**
      */
     @ManyToOne
-    private Product product;
-
-    /**
-     */
-    private int amount;
-
-    /**
-     */
-    @ManyToOne
     private Busi busi;
 
     /**
@@ -51,5 +46,6 @@ public class ProductOrder {
 
     /**
      */
-    private int outAmount;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productOrder")
+    private Set<OrderProduct> products = new HashSet<OrderProduct>();
 }

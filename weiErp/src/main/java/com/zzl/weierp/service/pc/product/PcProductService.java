@@ -59,7 +59,7 @@ public class PcProductService {
 		
 		// check param
 		if(null == body) {
-			return WebUtil.toJson(GlobalConst.STATUS_FAIL);
+			return WebUtil.toJsonString(GlobalConst.STATUS_FAIL);
 		}
 		
 		// parse body
@@ -107,7 +107,7 @@ public class PcProductService {
 			oriProduct.persist();
 		}
 		
-		return WebUtil.toJson(GlobalConst.STATUS_SUCCESS);
+		return WebUtil.toJsonString(GlobalConst.STATUS_SUCCESS);
 	}
 
 }

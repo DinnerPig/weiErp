@@ -49,7 +49,7 @@ public class PcBusiService {
 		
 		// check param
 		if(null == busi) {
-			return WebUtil.toJson(GlobalConst.STATUS_FAIL);
+			return WebUtil.toJsonString(GlobalConst.STATUS_FAIL);
 		}
 		
 		// add
@@ -73,7 +73,7 @@ public class PcBusiService {
 			oriBusi.persist();
 		}
 		
-		return WebUtil.toJson(GlobalConst.STATUS_SUCCESS);
+		return WebUtil.toJsonString(GlobalConst.STATUS_SUCCESS);
 	}
 
 }
