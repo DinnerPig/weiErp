@@ -10,30 +10,16 @@ var home = {
 	},
 	
 	// 点击导航菜单
-	menu : function(type) {
-	    
-	    $.get("", function() {
+	menu : function(obj, type) {
+	    myUtil.showLoading();
+	    $.get("phone/menu/" + type, function(result) {
+	        myUtil.hideLoading();
 	        
+	        $(obj).siblings().removeClass("my-naviActive");
+	        $(obj).addClass("my-naviActive");
+	        
+	        $("#mainContents").html(result);
 	    });
-	    // 个人中心
-	    if(type === "center") {
-	        
-	    }
-	    
-	    // 购物车
-	    else if(type === "shopCar") {
-	        location = "";
-	    }
-	    
-	    // 礼品
-	    else if(type === "product") {
-	        
-	    }
-	    
-	    // 注销
-	    else if(type === "logout") {
-	        
-	    }
 	}
 };
 
