@@ -27,11 +27,7 @@
 		<div class="my_detailBlock">
 			<div id="detailBlock">
 				<div class="my_productImg">
-					<c:forEach items="${product.images}" var="image" varStatus="idx">
-						<c:if test="${idx.count eq 1}">
-							<img src="${image.url}">
-						</c:if>
-					</c:forEach>
+					<img src="${product.mainImage}">
 				</div>	
 				
 				<div class="my_params">

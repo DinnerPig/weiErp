@@ -37,6 +37,18 @@
          			</td>
          		</tr>
          		<tr>
+                    <td>主图</td>
+                    <td>
+                        <span style="display:none;">上传中......<i class="fa fa-refresh fa-spin"></i></span>
+                        <input type="file" onchange="product.upload(this,'main')" style="width:70px;">
+                    </td>
+                </tr>
+                <tr>
+                	<td colspan="2" id="mainImgTd">
+                		<img src="${product.mainImage}?imageView/1/w/50/h/50">
+                	</td>
+                </tr>
+         		<tr>
          			<td>编号</td>
          			<td><input type="text" class="form-control" id="editSerial" value="${product.serial}"></td>
          		</tr>

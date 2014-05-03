@@ -24,14 +24,25 @@
 	
 	<body>
 	
-		<div class="my_news"></div>
+		<!-- 导航 -->
+		<div class="my-navi clearfix">
+			<div class="my-naviActive" onclick="home.menu('center')">个人中心</div>
+			<div onclick="home.menu('shopCar')">购物车</div>
+			<div onclick="home.menu('product')">商品列表</div>
+			<div onclick="home.menu('logout')">注销</div>
+		</div>
 		
-		<div class="my_bigType">
-			<ul>
-				<c:forEach items="${types}" var="type">
-					<li ontouchstart="" tid="${type.id}">${type.name}</li>
-				</c:forEach>
-			</ul>
+		<!-- 内容 -->
+		<div class="my-mainContents">
+			<div class="my_news"></div>
+			
+			<div class="my_bigType">
+				<ul>
+					<c:forEach items="${types}" var="type">
+						<li ontouchstart="" tid="${type.id}">${type.name}</li>
+					</c:forEach>
+				</ul>
+			</div>
 		</div>
 		
 	

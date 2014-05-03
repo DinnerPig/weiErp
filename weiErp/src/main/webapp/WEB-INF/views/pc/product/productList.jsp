@@ -6,6 +6,7 @@
 		<th>#</th>
 		<th>编号</th>
 		<th>类型</th>
+		<th>主图</th>
 		<th>名称</th>
 		<th>规格</th>
 		<th>单价</th>
@@ -18,6 +19,9 @@
 			<td>${idx.count}</td>
 			<td>${product.serial}</td>
 			<td>${product.type.name}</td>
+			<td>
+				<img alt="" src="${product.mainImage}?imageView/1/w/50/h/50" onclick="product.showBigImg(this)">
+			</td>
 			<td>${product.name}</td>
 			<td>${product.standard}</td>
 			<td>${product.price}</td>

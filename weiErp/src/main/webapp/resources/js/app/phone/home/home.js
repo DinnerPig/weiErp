@@ -7,6 +7,33 @@ var home = {
 		if(type == "busi") {
 			location = "phone/busi";
 		}
+	},
+	
+	// 点击导航菜单
+	menu : function(type) {
+	    
+	    $.get("", function() {
+	        
+	    });
+	    // 个人中心
+	    if(type === "center") {
+	        
+	    }
+	    
+	    // 购物车
+	    else if(type === "shopCar") {
+	        location = "";
+	    }
+	    
+	    // 礼品
+	    else if(type === "product") {
+	        
+	    }
+	    
+	    // 注销
+	    else if(type === "logout") {
+	        
+	    }
 	}
 };
 

@@ -86,6 +86,7 @@ public class PcProductService {
 		else {
 			Product oriProduct = Product.findProduct(product.getId());
 			oriProduct.setDescription(product.getDescription());
+			oriProduct.setMainImage(product.getMainImage());
 			
 			// clean ori images
 			productImageRepository.deleteByProduct(product.getId());

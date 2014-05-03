@@ -53,6 +53,8 @@
 		<a href="javascript:void(0)" onclick="order.done(${order.id}, this)">确认送货&nbsp;<i class="fa fa-truck"></i></a>
 		&emsp;
 		<a href="javascript:void(0)" onclick="order.remove(${order.id}, this)">删除订单&nbsp;<i class="fa fa-trash-o"></i></a>
+		&emsp;
+		<a href="javascript:void(0)" onclick="order.print(${order.id}, this)">打印订单&nbsp;<i class="fa fa-trash-o"></i></a>
 	</h4>
 	<hr>
 </c:forEach>

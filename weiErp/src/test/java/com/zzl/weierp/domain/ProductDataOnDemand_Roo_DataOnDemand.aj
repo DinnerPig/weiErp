@@ -30,6 +30,7 @@ privileged aspect ProductDataOnDemand_Roo_DataOnDemand {
     public Product ProductDataOnDemand.getNewTransientProduct(int index) {
         Product obj = new Product();
         setDescription(obj, index);
+        setMainImage(obj, index);
         setName(obj, index);
         setPrice(obj, index);
         setSerial(obj, index);
@@ -40,6 +41,11 @@ privileged aspect ProductDataOnDemand_Roo_DataOnDemand {
     public void ProductDataOnDemand.setDescription(Product obj, int index) {
         String description = "description_" + index;
         obj.setDescription(description);
+    }
+    
+    public void ProductDataOnDemand.setMainImage(Product obj, int index) {
+        String mainImage = "mainImage_" + index;
+        obj.setMainImage(mainImage);
     }
     
     public void ProductDataOnDemand.setName(Product obj, int index) {

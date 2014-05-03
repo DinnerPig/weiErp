@@ -66,4 +66,12 @@ privileged aspect Product_Roo_JavaBean {
         this.images = images;
     }
     
+    public String Product.getMainImage() {
+        return this.mainImage;
+    }
+    
+    public void Product.setMainImage(String mainImage) {
+        this.mainImage = mainImage;
+    }
+    
 }

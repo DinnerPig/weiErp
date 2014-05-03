@@ -3,14 +3,10 @@
 
 <c:forEach items="${products}" var="product">
 	<li ontouchstart="" pid="${product.id}">
-		<c:forEach items="${product.images}" var="image" varStatus="idx">
-			<c:if test="${idx.count eq 1}">
-				<img src="${image.url}">
-			</c:if>
-		</c:forEach>
+		<img src="${product.mainImage}">
 		<div>
 			<h4>${product.name}</h4>
-			<p>${product.description}</p>
+			<p style="color:red">${product.price}&nbsp;元</p>
 		</div>
 	</li>
 </c:forEach>

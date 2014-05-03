@@ -143,3 +143,8 @@ focus --class ~.domain.ProductOrder
 field string --fieldName expressSerial
 quit
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-27 11:24:01
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-27 20:55:23
+focus --class ~.domain.Product
+field string --fieldName mainImage
+quit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-27 20:56:20

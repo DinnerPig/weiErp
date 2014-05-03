@@ -8,6 +8,10 @@
 	</li>
 	<li class="my_todoOrderDetail">
 		<table class="my_table">
+			<tr>
+				<td>快递单号：</td>
+				<td>${order.expressSerial}</td>
+			</tr>
 			<c:forEach items="${order.products}" var="orderProduct">
 				<tr>
 					<td>礼品名：</td>

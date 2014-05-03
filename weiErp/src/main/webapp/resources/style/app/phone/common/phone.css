@@ -41,3 +41,31 @@ body {
 	color: #e67e22;
 	text-align: center;
 }
+
+/* 导航 */
+.my-navi {
+	width:320px;
+	position: fixed;
+	top: 0;
+	left:50%;
+	margin-left:-160px;
+	background: #fff;
+}
+.my-navi div {
+	width: 80px;
+	float:left;
+	text-align: center;
+	height: 30px;
+	line-height: 30px;
+}
+.my-naviActive {
+	background: #FF9933;
+	color:#fff;
+}
+
+/* 页面主体内容 */
+.my-mainContents {
+	margin: 35px auto 5px;
+	width: 320px;
+	text-align: center;
+}

@@ -113,6 +113,9 @@ var product = {
             price : $("#editPrice").val(),
         };
         
+        var mainImage = $("#mainImgTd").children("img").attr("src");
+        model.mainImage = mainImage.substring(0, mainImage.indexOf("?"));;
+        
         var id = $("#hiddenId").val();
         if(id !== "") {
             model.id = id;
@@ -219,7 +222,7 @@ var product = {
     },
     
     // 上传图片
-    upload : function(obj) {
+    upload : function(obj, type) {
         
         // 1.获取上传文件路径
         var path = $(obj).val();
@@ -249,10 +252,15 @@ var product = {
                     var key = blkRet.key;
                     
                     //赋值
-                    $("#imgTd").append("<div class='my_imgList'>" +
-                    		           "<img class='my_smImg' src='" + qiniu.config.DOMAIN_NAME + key + "?imageView/1/w/50/h/50'>" +
-                    		           "<button class='btn btn-info my_hoverDelBtn' onclick='product.delImg(this)'><i class='fa fa-trash-o'></i></button>" +
-                    		           "</div>");
+                    if(type === "main") {
+                        $("#mainImgTd").html("<img class='my_smImg' src='" + qiniu.config.DOMAIN_NAME + key + "?imageView/1/w/50/h/50'>");
+                    }
+                    else {
+                        $("#imgTd").append("<div class='my_imgList'>" +
+                                "<img class='my_smImg' src='" + qiniu.config.DOMAIN_NAME + key + "?imageView/1/w/50/h/50'>" +
+                                "<button class='btn btn-info my_hoverDelBtn' onclick='product.delImg(this)'><i class='fa fa-trash-o'></i></button>" +
+                                "</div>");
+                    }
                 }
                 
                 //上传失败

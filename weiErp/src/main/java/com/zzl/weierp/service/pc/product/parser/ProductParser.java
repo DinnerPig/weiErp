@@ -21,6 +21,10 @@ public class ProductParser {
 			product.setName(json.getString("name"));
 		}
 		
+		if(json.has("mainImage")) {
+			product.setMainImage(json.getString("mainImage"));
+		}
+		
 		if(json.has("description")) {
 			product.setDescription(json.getString("description"));
 		}
