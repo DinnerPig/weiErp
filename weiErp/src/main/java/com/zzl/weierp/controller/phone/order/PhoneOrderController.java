@@ -159,44 +159,4 @@ public class PhoneOrderController {
 		
 	}
 	
-	/**
-	 * 进入订单结算页面
-	 * @param order
-	 * @param session
-	 * @return
-	 */
-	@RequestMapping(value = "/page", method = RequestMethod.GET)
-	public String order(Model model, HttpSession session) {
-		
-		// check session
-		Long userId = SessionUtil.getUserId(session);
-		if(null == userId) {
-			return "phone/timeout/timeout";
-		}
-		
-		List<ShopCarProduct> list = new ArrayList<ShopCarProduct>();
-		Object products = session.getAttribute("products");
-		if(null != products) {
-			@SuppressWarnings("unchecked")
-			Map<Long, Integer> map = (Map<Long, Integer>) products;
-			Iterator<Entry<Long, Integer>> iter = map.entrySet().iterator();
-			while(iter.hasNext()) {
-				ShopCarProduct product = new ShopCarProduct();
-				Entry<Long, Integer> entry = iter.next();
-				Long id = entry.getKey();
-				product.setId(id);
-				product.setAmount(entry.getValue());
-				Product temp = Product.findProduct(id);
-				product.setName(temp.getName());
-				product.setPrice(temp.getPrice());
-				
-				list.add(product);
-			}
-		}
-		// set model
-		model.addAttribute("products", list);
-		model.addAttribute("busi", Busi.findBusi(userId));
-		
-		return "phone/product/order";
-	}
 }

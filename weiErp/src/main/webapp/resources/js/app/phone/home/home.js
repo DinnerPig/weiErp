@@ -19,6 +19,11 @@ var home = {
 	        $(obj).addClass("my-naviActive");
 	        
 	        $("#mainContents").html(result);
+	        
+	        // 监听事件
+	        if(type === "product") {
+	            product.listenProductType();
+	        }
 	    });
 	}
 };

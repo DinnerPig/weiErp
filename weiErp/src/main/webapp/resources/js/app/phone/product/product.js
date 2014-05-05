@@ -1,8 +1,61 @@
 var product = {
 	
+    // 监听点击礼品分类事件
+    listenProductType : function() {
+        $("div.my_bigType").contents().find("li").click(function() {
+            product.showPage($(this).attr("tid"));
+        });
+    },
+    
+    // 监听关键字查询
+    listenQueryByKey : function() {
+        $("#queryBtn").click(function() {
+            product.queryByKey();
+        });
+    },
+    
+    // 监听加入购物车事件
+    listenAddShopCar : function() {
+        $("#shopCarBtn").click(function() {
+            var id = $(this).attr("pid");
+            
+            // 添加到购物车
+            var amount = window.prompt("请输入产品数量");
+            if(/^[0-9]+$/.test(amount)) {
+                detail.addShopCar(id, amount);
+            }
+            else {
+                alert("数量必须为数字");
+            }
+        });
+    },
+    
+    // 显示礼品列表主页面
+    showPage : function(typeId) {
+        $.get("phone/product/show/" + typeId, function(result) {
+            $("#mainContents").html(result);
+            
+            // 执行分页查询
+            product.queryList(null);
+            
+            // 监听关键字查询
+            product.listenQueryByKey();
+            
+        }, "html");
+    },
+    
 	// 查询详情
 	detail : function(id) {
-		location = "phone/product/detail/" + id;
+	    $.get("phone/product/detail/" + id, function(result) {
+	        $("#mainContents").html(result);
+	        
+	        // 监听结算事件
+	        product.listenToOrder();
+	        
+	        // 监听加入购物车事件
+	        product.listenAddShopCar();
+	        
+	    }, "html");
 	},
 	
 	// 分页查询
@@ -47,14 +100,12 @@ var product = {
 		}
 	},
 	
-	// 监听搜索产品关键字事件
-	listenQueryByKey : function() {
+	// 根据关键字搜索产品
+	queryByKey : function() {
 		var keyword = $("#keyword").val().trim();
 		
 		// 组装分页查询参数
 		var params = {
-			size : 10,
-			page : 0,
 			keyword : keyword
 		};
 		
@@ -76,15 +127,4 @@ var product = {
 
 $(document).ready(function(){
 	
-	// 执行分页查询
-	var params = {
-		size : 10,
-		page : 0
-	};
-	product.queryList(params);
-	
-	// 监听关键字查询
-	$("#queryBtn").click(function() {
-	    product.listenQueryByKey();
-	});
 });

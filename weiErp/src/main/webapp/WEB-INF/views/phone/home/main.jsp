@@ -21,6 +21,9 @@
 		<link href="resources/style/app/phone/common/phone.css" rel="stylesheet">
 		<link href="resources/style/app/phone/product/productType.css" rel="stylesheet">
 		<link href="resources/style/app/phone/busi/busiMenu.css" rel="stylesheet">
+		<link href="resources/style/app/phone/product/product.css" rel="stylesheet">
+		<link href="resources/style/app/phone/product/detail.css" rel="stylesheet">
+		<link href="resources/style/app/phone/order/order.css" rel="stylesheet">
 	</head>
 	
 	<body>
@@ -50,6 +53,9 @@
 	<script type="text/javascript" src="resources/js/app/utils/utils.js"></script>
 	<script type="text/javascript" src="resources/js/app/phone/home/home.js"></script>
 	<script type="text/javascript" src="resources/js/app/phone/busi/phoneBusi.js"></script>
+	<script type="text/javascript" src="resources/js/app/phone/product/product.js"></script>
+	<script type="text/javascript" src="resources/js/app/phone/product/detail.js"></script>
+	<script type="text/javascript" src="resources/js/app/phone/product/order.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			home.menu(document.getElementById("menuProduct"), "product"); 

@@ -50,6 +50,7 @@ body {
 	left:50%;
 	margin-left:-160px;
 	background: #fff;
+	z-index: 1;
 }
 .my-navi div {
 	width: 80px;
