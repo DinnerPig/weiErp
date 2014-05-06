@@ -17,6 +17,7 @@
 <link href="resources/style/plugin/font-awesome-4.0.1/css/font-awesome.min.css" rel="stylesheet">
 <link href="resources/style/app/pc/common/pc.css" rel="stylesheet">
 <link href="resources/style/app/pc/product/pcProduct.css" rel="stylesheet">
+<link href="resources/js/plugin/jquery/print/PrintArea.css" rel="stylesheet">
 </head>
 <body>
 
@@ -128,6 +129,9 @@
 	<!-- 	js资源 -->
 	<script type="text/javascript" src="resources/js/plugin/jquery/jquery-1.10.2.js"></script>
 	<script type="text/javascript" src="resources/js/plugin/bootstrap3/js/bootstrap.min.js"></script>
+	
+	<!-- 	js打印 -->
+	<script type="text/javascript" src="resources/js/plugin/jquery/print/jquery.PrintArea.js"></script>
 	
 	<script type="text/javascript" src="resources/js/app/utils/qiniu/qiniu.js"></script>
 	

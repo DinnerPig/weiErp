@@ -113,6 +113,16 @@ var order = {
                 }
             }, "json");
         }
+    },
+    
+    // 打印
+    print : function(obj) {
+        var attr = [];
+        attr.push("class");
+        attr.push("id");
+        attr.push("style");
+        attr.push("on");
+        $(obj).parent().prev().printArea({mode:"popup", popClose:true, retainAttr:attr});
     }
     
 };
