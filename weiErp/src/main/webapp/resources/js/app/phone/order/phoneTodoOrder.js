@@ -17,9 +17,3 @@ var phoneTodoOrder = {
 		}, "html");
 	},
 };
-
-$(document).ready(function(){
-	
-	// 执行查询
-	phoneTodoOrder.queryAll();
-});

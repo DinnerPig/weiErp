@@ -83,4 +83,31 @@ var order = {
         $("#orderDiv").css("-webkit-transform", "translate3d(500px, 0px, 0px)");
         $("#orderDiv").css("-moz-transform", "translate3d(500px, 0px, 0px)");
 	},
+	
+	// 查询未发货订单
+	queryOrder : function(type) {
+	    if(type === "todo") {
+	        $("#mainContents").load("resources/model/phone/order/phoneTodoOrder.jsp", function() {
+	            
+	            // 执行查询
+	            phoneTodoOrder.queryAll();
+	        });
+	    }
+	    else if(type === "done") {
+	        $("#mainContents").load("resources/model/phone/order/phoneDoneOrder.jsp", function() {
+	            
+	            // 执行分页查询
+	            var params = {
+	                    page : 0
+	            };
+	            phoneDoneOrder.queryList(params);
+	            
+	            // 监听关键字查询
+	            $("#queryBtn").click(function() {
+	                phoneDoneOrder.listenQueryByKey();
+	            });
+	        });
+	        
+	    }
+	}
 };

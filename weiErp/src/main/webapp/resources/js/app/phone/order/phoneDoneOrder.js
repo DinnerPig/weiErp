@@ -59,17 +59,3 @@ var phoneDoneOrder = {
         phoneDoneOrder.queryList(params);
     },
 };
-
-$(document).ready(function(){
-    
-    // 执行分页查询
-    var params = {
-        page : 0
-    };
-    phoneDoneOrder.queryList(params);
-    
-    // 监听关键字查询
-    $("#queryBtn").click(function() {
-        phoneDoneOrder.listenQueryByKey();
-    });
-});

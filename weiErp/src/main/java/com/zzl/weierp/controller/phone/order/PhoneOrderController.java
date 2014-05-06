@@ -1,10 +1,6 @@
 package com.zzl.weierp.controller.phone.order;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.servlet.http.HttpSession;
 
@@ -22,9 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.zzl.weierp.common.globalConst.GlobalConst;
 import com.zzl.weierp.common.utils.SessionUtil;
 import com.zzl.weierp.common.utils.WebUtil;
-import com.zzl.weierp.domain.Busi;
-import com.zzl.weierp.domain.Product;
-import com.zzl.weierp.domain.vo.ShopCarProduct;
 import com.zzl.weierp.service.interfaces.order.IProductOrderService;
 import com.zzl.weierp.service.pc.order.PcOrderService;
 import com.zzl.weierp.service.phone.order.PhoneOrderService;

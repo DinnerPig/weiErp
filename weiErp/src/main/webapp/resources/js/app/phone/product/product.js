@@ -49,9 +49,6 @@ var product = {
 	    $.get("phone/product/detail/" + id, function(result) {
 	        $("#mainContents").html(result);
 	        
-	        // 监听结算事件
-	        product.listenToOrder();
-	        
 	        // 监听加入购物车事件
 	        product.listenAddShopCar();
 	        

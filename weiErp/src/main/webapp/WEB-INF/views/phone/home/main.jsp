@@ -56,6 +56,8 @@
 	<script type="text/javascript" src="resources/js/app/phone/product/product.js"></script>
 	<script type="text/javascript" src="resources/js/app/phone/product/detail.js"></script>
 	<script type="text/javascript" src="resources/js/app/phone/product/order.js"></script>
+	<script type="text/javascript" src="resources/js/app/phone/order/phoneTodoOrder.js"></script>
+	<script type="text/javascript" src="resources/js/app/phone/order/phoneDoneOrder.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			home.menu(document.getElementById("menuProduct"), "product"); 
