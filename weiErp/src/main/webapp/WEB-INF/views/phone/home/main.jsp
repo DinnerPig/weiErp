@@ -52,7 +52,7 @@
 	<script type="text/javascript" src="resources/js/app/phone/product/productType.js"></script>
 	<script type="text/javascript" src="resources/js/app/utils/utils.js"></script>
 	<script type="text/javascript" src="resources/js/app/phone/home/home.js"></script>
-	<script type="text/javascript" src="resources/js/app/phone/busi/phoneBusi.js"></script>
+	<script type="text/javascript" src="resources/js/app/phone/consumer/consumer.js"></script>
 	<script type="text/javascript" src="resources/js/app/phone/product/product.js"></script>
 	<script type="text/javascript" src="resources/js/app/phone/product/detail.js"></script>
 	<script type="text/javascript" src="resources/js/app/phone/product/order.js"></script>

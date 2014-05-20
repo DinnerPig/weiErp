@@ -29,13 +29,13 @@
 
 <body>
 
-	<div class="my_loginDiv">
+	<div class="my_loginDiv" id="loginDiv">
 		<h4>经销商登陆</h4>
 		<hr style="width:300px;height:1px;">
 		<c:if test="${error}">
 			<p class="my_error">账号或密码错误</p>
 		</c:if>
-		<form role="form" class="form-horizontal" action="phone/busi/login" method="post">
+		<form role="form" class="form-horizontal" action="consumer/login" method="post">
 			<table class="my_table table table-bordered">
 				<tr>
 					<td><i class="fa fa-user"></i></td>
@@ -51,14 +51,22 @@
 				</tr>
 			</table>
 			<button class="btn btn-info btn-block" type="submit">登陆</button>
+			<a class="btn btn-primary btn-block" onclick="consumer.registerPage()" href="javascript:void(0)">去注册</a>
 		</form>
 	</div>
 
+	<!-- loading -->
+	<div class="my_loading" id="loadingDiv">
+		<div id="loaderImage" style="margin: auto;"></div>
+		<p>加载中</p>
+	</div>
 
 	<!-- 	js资源 -->
 	<script type="text/javascript" src="resources/js/plugin/jquery/jquery-1.10.2.js"></script>
 	<script type="text/javascript" src="resources/js/plugin/bootstrap3/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="resources/js/app/utils/utils.js"></script>
+	<script type="text/javascript" src="resources/js/app/utils/loading.js"></script>
+	<script type="text/javascript" src="resources/js/app/phone/consumer/consumer.js"></script>
 </body>
-</html>
 
+</html>

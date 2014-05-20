@@ -2,14 +2,14 @@ package com.zzl.weierp.common.utils;
 
 import javax.servlet.http.HttpSession;
 
-import com.zzl.weierp.domain.Busi;
+import com.zzl.weierp.domain.consumer.Consumer;
 
 public class SessionUtil {
 
 	public static void storeInfo(HttpSession session, Object user) {
 		if(null != user) {
-			if(user instanceof Busi) {
-				session.setAttribute("userId", ((Busi)user).getId());
+			if(user instanceof Consumer) {
+				session.setAttribute("userId", ((Consumer)user).getId());
 			}
 		}
 	}

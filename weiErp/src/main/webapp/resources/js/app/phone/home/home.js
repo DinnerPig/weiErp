@@ -7,6 +7,11 @@ var home = {
 		if(type == "busi") {
 			location = "phone/busi";
 		}
+		
+		// 会员注册
+        if(type == "vip") {
+            location = "phone/vip/login";
+        }
 	},
 	
 	// 点击导航菜单

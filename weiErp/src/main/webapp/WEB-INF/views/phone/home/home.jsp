@@ -43,7 +43,10 @@
 				<div name="menu"></div>
 				<div name="menu"></div>
 			</div>
-			<div class="my_menuLeft my_bottomRightMenu" name="menu"></div>
+			<div class="my_menuLeft my_bottomRightMenu my_busiMenu" name="menu_vip">
+				<i class="fa fa-group"></i>
+				会员登陆
+			</div>
 			<div class="my_menuLeft my_bottomLeftMenu" name="menu"></div>
 			<div class="my_menuLeft my_bottomMenu" name="menu"></div>
 		</div>

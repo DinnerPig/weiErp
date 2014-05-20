@@ -148,3 +148,71 @@ focus --class ~.domain.Product
 field string --fieldName mainImage
 quit
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-27 20:56:20
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-07 22:13:24
+entity jpa --class ~.domain.Customer --testAutomatically 
+field string --fieldName username
+field string --fieldName password
+field string --fieldName nickname
+field string --fieldName phone
+field string --fieldName qq
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-18 16:58:34
+// [failed] entity jpa --class ~.domain.user.User --testAutomatically 
+entity jpa --class ~.domain.consumer.Consumer --testAutomatically 
+field string --fieldName username
+field string --fieldName password
+field string --fieldName username --unique true --notNull 
+field string --fieldName password --notNull 
+field string --fieldName shareSerial
+entity jpa --class ~.domain.consumer.ConsumerDetail --testAutomatically 
+field string --fieldName phone --notNull 
+field string --fieldName trueName --notNull 
+field string --fieldName address --notNull 
+field string --fieldName qq
+focus --class ~.domain.consumer.Consumer
+field string --fieldName shareSerial --notNull 
+field string --fieldName serial --notNull 
+focus --class ~.domain.consumer.ConsumerDetail
+field string --fieldName email
+entity jpa --class ~.domain.consumer.ConsumerBank --testAutomatically 
+field string --fieldName payAccount --unique --notNull 
+field string --fieldName payAccount
+field string --fieldName bank
+field string --fieldName bankAccount
+field string --fieldName bankUser
+field reference --fieldName consumer --type ~.domain.consumer.Consumer --cardinality ONE_TO_ONE 
+focus --class ~.domain.consumer.Consumer
+// [failed] field set --fieldName bank --type ~.domain.consumer.ConsumerBank --cardinality ONE_TO_ONE --mappedBy consumer
+// [failed] field set --fieldName bank --type ~.domain.consumer.ConsumerBank --cardinality MANY_TO_ONE --mappedBy consumer
+field set --fieldName bank --type ~.domain.consumer.ConsumerBank --cardinality ONE_TO_MANY --mappedBy consumer
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-18 17:29:51
+focus --class ~.domain.consumer.ConsumerDetail
+field reference --fieldName consumer --type ~.domain.consumer.Consumer --cardinality ONE_TO_ONE 
+focus --class ~.domain.consumer.Consumer
+field set --fieldName detail --type ~.domain.consumer.ConsumerDetail --cardinality ONE_TO_MANY --mappedBy consumer
+quit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-18 17:32:29
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-19 17:24:15
+focus --class ~.domain.consumer.Consumer
+field number --fieldName degree --type int
+field number --fieldName degree --type int --notNull 1
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-19 17:35:52
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-20 09:16:18
+focus --class ~.domain.consumer.Consumer
+// [failed] field date --fieldName joinDate --type java.util.Date --dateTimeFormatPattern "yyyy-MM-dd HH:mm:ss"
+// [failed] field date --fieldName joinDate --type java.util.Date --dateTimeFormatPattern "yyyy-MM-dd"
+field date --fieldName joinDate --type java.util.Date --dateTimeFormatPattern "yyyy-MM-dd HH:mm:ss"
+field date --fieldName createDate --type java.util.Date --dateTimeFormatPattern "yyyy-MM-dd HH:mm:ss"
+quit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-20 09:19:08
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-20 09:39:46
+focus --class ~.domain.consumer.Consumer
+finder list 
+finder add --finderName findConsumersByUsernameEquals
+finder add --finderName findConsumersByShareSerialEquals
+quit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-20 09:59:37
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-20 12:38:31
+entity jpa --class ~.domain.record.riseRecord --testAutomatically 
+field reference --fieldName consumer --type ~.domain.consumer.Consumer --cardinality MANY_TO_ONE --notNull 
+field date --fieldName createDate --type java.util.Date --dateTimeFormatPattern "yyyy-MM-dd HH:mm:ss"

@@ -29,7 +29,7 @@
                   <a class="navbar-brand">后台管理 </a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                  <li><a href="pc"><i class="fa fa-power-off"></i>&nbsp;登出</a></li>
+                  <li><a href="pc/main"><i class="fa fa-power-off"></i>&nbsp;登出</a></li>
                 </ul>
               </div>
             </div>
@@ -44,13 +44,16 @@
                     <div class="panel-heading">
                     	<h4 class="panel-title">
 				        	<a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseOne1">
-				        		经销商管理
+				        		会员管理
 				        	</a>
 				      	</h4>
                     </div>
                     <div id="collapseOne1" class="panel-collapse in">
                         <div class="panel-body" url="pc/busi/query/list" name="submenu" style="cursor: pointer;">
-                                                                            经销商列表
+                                                                            会员列表
+                        </div>
+                        <div class="panel-body" url="pc/record/riseRecord" name="submenu" style="cursor: pointer;">
+                                                                            会员升级申请
                         </div>
                     </div>
                     <div class="panel-heading">
@@ -94,6 +97,9 @@
             </div>
         </div>      
     </div>
+
+	<!-- 会员信息 -->
+	<div class="modal fade" id="consumerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 
 	<!-- 礼品编辑 -->
 	<div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
@@ -148,6 +154,12 @@
 	
 	<!-- 订单 -->
 	<script type="text/javascript" src="resources/js/app/pc/order/order.js"></script>
+	
+	<!-- 会员 -->
+	<script type="text/javascript" src="resources/js/app/phone/consumer/consumer.js"></script>
+	
+	<!-- 升级分享会员记录 -->
+	<script type="text/javascript" src="resources/js/app/pc/record/riseRecord.js"></script>
 	
 	<!-- 记得删掉 -->
 	<script src="http://qtestbucket.qiniudn.com/demo/CryptoJS.js" type="text/javascript"></script>

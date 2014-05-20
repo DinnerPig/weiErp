@@ -56,7 +56,7 @@
 		&emsp;
 		<a href="javascript:void(0)" onclick="order.remove(${order.id}, this)">删除订单&nbsp;<i class="fa fa-trash-o"></i></a>
 		&emsp;
-		<a href="javascript:void(0)" onclick="order.print(this)">打印订单&nbsp;<i class="fa fa-trash-o"></i></a>
+		<a href="pc/order/print/${order.id}" target="_blank">打印订单&nbsp;<i class="fa fa-print"></i></a>
 	</h4>
 	<hr>
 </c:forEach>

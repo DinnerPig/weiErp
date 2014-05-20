@@ -19,35 +19,31 @@ import com.zzl.weierp.common.utils.SessionUtil;
 import com.zzl.weierp.domain.Busi;
 import com.zzl.weierp.domain.Product;
 import com.zzl.weierp.domain.ProductType;
+import com.zzl.weierp.domain.consumer.Consumer;
 import com.zzl.weierp.domain.vo.ShopCarProduct;
 
 @RequestMapping
 @Controller
-public class UsersController {
+public class HomeController {
 
 	@RequestMapping("/home")
 	public String home() {
 		return "phone/home/home";
 	}
 
-	@RequestMapping("/pc/main")
-	public String main() {
-		return "pc/main/main";
-	}
-
 	@RequestMapping(value = "/phone/menu/{type}", method = RequestMethod.GET)
 	public String menu(Model model, @PathVariable String type,
 			HttpSession session) {
 
-		// 1.check session
+		// 检查session
 		Long userId = SessionUtil.getUserId(session);
 		if (null == userId) {
 			return "phone/timeout/timeout";
 		}
 
-		// person center
+		// 个人中心
 		if ("center".equals(type)) {
-			model.addAttribute("busi", Busi.findBusi(userId));
+			model.addAttribute("consumer", Consumer.findConsumer(userId));
 			return "phone/busi/busiInfo";
 		}
 

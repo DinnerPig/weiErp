@@ -46,6 +46,21 @@ public class PcOrderController {
 		return "pc/order/pcOrder";
 	}
 	
+	/**
+	 * 进入订单列表页面
+	 * 
+	 * @param model
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value = "/print/{id}", method = RequestMethod.GET)
+	public String print(Model model, HttpSession session, @PathVariable Long id) {
+		
+		model.addAttribute("order", ProductOrder.findProductOrder(id));
+		
+		return "pc/order/printTodoOrder";
+	}
+	
 	@RequestMapping(value = "/query/list", method = RequestMethod.GET)
 	public String queryList(Model model, HttpSession session,
 			@RequestParam(required = false) Long busiId,
