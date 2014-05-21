@@ -26,23 +26,6 @@ public class PcBusiController {
 
 	@Autowired
 	private PcBusiService pcBusiService;
-
-	@RequestMapping(value = "/query/list", method = RequestMethod.GET)
-	public String queryList(Model model, HttpSession session,
-			@RequestParam(required = false) Integer page,
-			@RequestParam(required = false) Integer size) {
-
-		// 1.check session
-//		Long busiId = (Long) session.getAttribute("busiId");
-//		if (null == busiId) {
-//			return "common/timeout";
-//		}
-
-		// 2.query busis
-		model.addAttribute("busis", pcBusiService.queryList(model, page, size));
-
-		return "pc/busi/busi";
-	}
 	
 	/**
 	 * 查询经销商

@@ -10,7 +10,6 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,8 +24,8 @@ import com.zzl.weierp.domain.consumer.ConsumerDetail;
 import com.zzl.weierp.domain.record.RiseRecord;
 
 @Controller
-@RequestMapping("/consumer")
-public class ConsumerController {
+@RequestMapping("/phone/consumer")
+public class PhoneConsumerController {
 
 	/**
 	 * 进入注册页面
@@ -52,7 +51,7 @@ public class ConsumerController {
 			
 			// 判断分享人编号是否存在
 			String shareSerial = consumer.getShareSerial();
-			List<Consumer> list = Consumer.findConsumersByShareSerialEquals(shareSerial).getResultList();
+			List<Consumer> list = Consumer.findConsumersBySerialEquals(shareSerial).getResultList();
 			
 			// 分享人编号不存在
 			if(null == list || list.isEmpty()) {
@@ -190,32 +189,4 @@ public class ConsumerController {
 		return WebUtil.toJsonString(StatusCode.STATUS_SUCCESS);
 	}
 	
-	/**
-	 * 会员信息
-	 * @return
-	 */
-	@RequestMapping(value = "/query/{id}", method = RequestMethod.GET)
-	public String query(Model model, HttpSession session, @PathVariable Long id) {
-		
-		model.addAttribute("consumer", Consumer.findConsumer(id));
-		
-		return "pc/consumer/consumerInfo";
-	}
-	
-	/**
-	 * 升级为分享会员
-	 * @return
-	 */
-	@RequestMapping(value = "/rise/{id}", method = RequestMethod.POST)
-	@ResponseBody
-	public String rise(HttpSession session, @PathVariable Long id) {
-		
-		Consumer consumer = Consumer.findConsumer(id);
-		
-		consumer.setDegree(2);
-		
-		consumer.persist();
-		
-		return WebUtil.toJsonString(StatusCode.STATUS_SUCCESS);
-	}
 }

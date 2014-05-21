@@ -9,6 +9,14 @@ import javax.persistence.TypedQuery;
 
 privileged aspect Consumer_Roo_Finder {
     
+    public static TypedQuery<Consumer> Consumer.findConsumersBySerialEquals(String serial) {
+        if (serial == null || serial.length() == 0) throw new IllegalArgumentException("The serial argument is required");
+        EntityManager em = Consumer.entityManager();
+        TypedQuery<Consumer> q = em.createQuery("SELECT o FROM Consumer AS o WHERE o.serial = :serial", Consumer.class);
+        q.setParameter("serial", serial);
+        return q;
+    }
+    
     public static TypedQuery<Consumer> Consumer.findConsumersByShareSerialEquals(String shareSerial) {
         if (shareSerial == null || shareSerial.length() == 0) throw new IllegalArgumentException("The shareSerial argument is required");
         EntityManager em = Consumer.entityManager();

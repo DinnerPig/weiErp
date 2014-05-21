@@ -1,45 +1,20 @@
 package com.zzl.weierp.service.pc.busi;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
 
 import com.zzl.weierp.common.globalConst.GlobalConst;
-import com.zzl.weierp.common.globalConst.StatusCode;
 import com.zzl.weierp.common.utils.WebUtil;
 import com.zzl.weierp.domain.Busi;
-import com.zzl.weierp.repository.busi.BusiRepository;
+import com.zzl.weierp.repository.consumer.ConsumerRepository;
 
 @Service
 public class PcBusiService {
 
 	@Autowired
-	private BusiRepository busiRepository;
+	private ConsumerRepository busiRepository;
 	
-	/**
-	 * 分页查询
-	 * @param model
-	 * @param keyword
-	 * @param page
-	 * @param size
-	 * @param typeId 
-	 * @return
-	 */
-	public List<Busi> queryList(Model model, Integer page, Integer size) {
-		
-		// 1.query total number
-		long total = busiRepository.count();
-
-		// 2.set page info
-		WebUtil.setPageInfo(model, total, page, size);
-		
-		// 3.execute query
-		return busiRepository.queryList(page, size);
-	}
-
 	/**
 	 * 保存
 	 * @param body
@@ -53,12 +28,6 @@ public class PcBusiService {
 			return WebUtil.toJsonString(GlobalConst.STATUS_FAIL);
 		}
 
-		// check repeat
-		long num = busiRepository.countForRepeat(busi.getId(), busi.getUsername());
-		if(num > 0) {
-			return WebUtil.toJsonString(StatusCode.STATUS_REPEAT_EXIST);
-		}
-		
 		// add
 		if(null == busi.getId()) {
 			busi.persist();

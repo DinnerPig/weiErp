@@ -35,7 +35,7 @@
 		<c:if test="${error}">
 			<p class="my_error">账号或密码错误</p>
 		</c:if>
-		<form role="form" class="form-horizontal" action="consumer/login" method="post">
+		<form role="form" class="form-horizontal" action="phone/consumer/login" method="post">
 			<table class="my_table table table-bordered">
 				<tr>
 					<td><i class="fa fa-user"></i></td>

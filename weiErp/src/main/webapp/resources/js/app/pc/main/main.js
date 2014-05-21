@@ -3,10 +3,16 @@ var main = {
     // 点击菜单
     clickMenu : function(url, obj) {
         
+        // 会员管理
+        if(url === "pc/consumer/list") {
+            consumer.queryList(null);
+        }
+            
         // 申请升级记录
-        if(url === "pc/record/riseRecord") {
+        else if(url === "pc/record/riseRecord") {
             riseRecord.recordPage();
         }
+        
         else {
             $("#pcLoading").show();
             $.get(url, function(result) {
@@ -27,14 +33,6 @@ var main = {
                     
                     // 监听新增礼品事件
                     product.listenAdd();
-                }
-                
-                // 经销商
-                if(url === "pc/busi/query/list") {
-                    var params = {
-                            page : 0
-                    };
-                    busi.queryList(params);
                 }
                 
                 // 订单

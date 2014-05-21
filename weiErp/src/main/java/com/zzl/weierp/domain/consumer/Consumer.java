@@ -13,7 +13,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @RooJavaBean
 @RooToString
-@RooJpaActiveRecord(finders = { "findConsumersByUsernameEquals", "findConsumersByShareSerialEquals" })
+@RooJpaActiveRecord(finders = { "findConsumersByUsernameEquals", "findConsumersByShareSerialEquals", "findConsumersBySerialEquals" })
 public class Consumer {
 
     /**

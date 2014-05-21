@@ -12,9 +12,9 @@ public class WebUtil {
      * @param page 页码
      * @param size 
      */
-    public static void setPageInfo(Model model, long totalPage, Integer page, Integer size) {
+    public static void setPageInfo(Model model, long total, Integer page, Integer size) {
         
-    	model.addAttribute("totalPage", MathUtil.getPageTotal((int)totalPage, size));
+    	model.addAttribute("totalPage", MathUtil.getPageTotal(total, size));
         if(null == page) {
         	page = 0;
         }

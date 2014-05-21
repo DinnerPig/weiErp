@@ -5,9 +5,9 @@ import java.util.Random;
 import com.zzl.weierp.common.globalConst.GlobalConst;
 
 public class MathUtil {
-	public static int getPageTotal(int total, Integer size) {
+	public static long getPageTotal(Long total, Integer size) {
 
-		int pageTotal = 1;
+		long pageTotal = 1;
 
 		/*
 		 * 默认每页10条

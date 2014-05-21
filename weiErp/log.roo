@@ -216,3 +216,14 @@ quit
 entity jpa --class ~.domain.record.riseRecord --testAutomatically 
 field reference --fieldName consumer --type ~.domain.consumer.Consumer --cardinality MANY_TO_ONE --notNull 
 field date --fieldName createDate --type java.util.Date --dateTimeFormatPattern "yyyy-MM-dd HH:mm:ss"
+quit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-20 17:22:20
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-21 23:04:55
+focus --class ~.domain.consumer.Consumer
+finder add --finderName findConsumersEqualsBySerials
+finder add --finderName findConsumersEqualBySerials
+finder add --finderName findConsumersEqualSerials
+finder list 
+finder add --finderName findConsumersBySerialEquals
+quit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-21 23:06:45

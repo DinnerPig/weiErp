@@ -5,7 +5,7 @@ var consumer = {
     // 进入注册页面
     registerPage : function() {
         myUtil.showLoading();
-        $.get("consumer/registerPage", function(result) {
+        $.get("phone/consumer/registerPage", function(result) {
             myUtil.hideLoading();
             $("#loginDiv").html(result);
         }, "html");
@@ -77,7 +77,7 @@ var consumer = {
     // 保存
     save : function(model, callback) {
         myUtil.showLoading();
-        $.post("consumer/save", model, function(result) {
+        $.post("phone/consumer/save", model, function(result) {
             myUtil.hideLoading();
             
             if(callback) {
@@ -133,7 +133,7 @@ var consumer = {
     // 升级成分享会员页面
     riseSharePage : function() {
         myUtil.showLoading();
-        $.get("consumer/riseSharePage", function(result) {
+        $.get("phone/consumer/riseSharePage", function(result) {
             myUtil.hideLoading();
             
             $("#mainContents").html(result);
@@ -186,7 +186,7 @@ var consumer = {
     // 执行升级提交
     riseShare : function(model, callback) {
         myUtil.showLoading();
-        $.post("consumer/applyRise", model, function(result) {
+        $.post("phone/consumer/applyRise", model, function(result) {
             myUtil.hideLoading();
             
             if(callback) {
@@ -195,12 +195,12 @@ var consumer = {
         }, "json");
     },
     
-    //=============================后台管理================================
+    //=============================后台管理之会员升级================================
     
     // 查询会员信息
     queryById : function(id, callback) {
         $("#pcLoading").show();
-        $.get("consumer/query/" + id, function(result) {
+        $.get("pc/consumer/query/" + id, function(result) {
             $("#pcLoading").hide();
             
             if(callback) {
@@ -213,7 +213,7 @@ var consumer = {
     // 执行升级
     rise : function(id, callback) {
         $("#pcLoading").show();
-        $.post("consumer/rise/" + id, function(result) {
+        $.post("pc/consumer/rise/" + id, function(result) {
             $("#pcLoading").hide();
             
             if(callback) {
@@ -221,4 +221,24 @@ var consumer = {
             }
         }, "json");
     },
+    
+    //=============================后台管理之会员列表================================
+    
+    // 分页查询
+    queryList : function(params) {
+        
+        $("#pcLoading").show();
+        $.get("pc/consumer/list", params, function(result) {
+            $("#pcLoading").hide();
+            
+            $("#mainContext").html(result);
+            
+            // 监听翻页事件
+            myUtil.listenChangePage(function(page) {
+                consumer.queryList({page:page});
+            });
+
+        }, "html");
+    },
+    
 };

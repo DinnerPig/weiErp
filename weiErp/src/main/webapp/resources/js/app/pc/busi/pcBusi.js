@@ -1,30 +1,5 @@
 var busi = {
     
-    // 分页查询
-    queryList : function(params) {
-        
-        $("#pcLoading").show();
-        $.get("pc/busi/query/list", params, function(result) {
-            $("#pcLoading").hide();
-            
-            $("#mainContext").html(result);
-            
-            // 监听翻页事件
-            busi.listenChangePage();
-
-            // 监听新增礼品事件
-            busi.listenAdd();
-            
-        }, "html");
-    },
-    
-    // 监听新增事件
-    listenAdd : function() {
-        $("#addBtn").click(function() {
-            busi.modal();
-        });
-    },
-    
     // 打开编辑页面
     modal : function(id) {
         $.get("pc/busi/modal", {id:id}, function(result) {
@@ -105,31 +80,7 @@ var busi = {
         busi.save(model);
     },
     
-    // 监听翻页事件
-    listenChangePage : function() {
-        
-        var params = {
-            size : 10,
-        };
-        
-        $("#nextPage").click(function() {
-           
-            params.page = $(this).attr("page");
-            
-            // 查询
-            busi.queryList(params);
-            
-        });
-        
-        $("#prevPage").click(function() {
-            
-            params.page = parseInt($(this).attr("page")) - 2;
-            
-            // 查询
-            busi.queryList(params);
-            
-        });
-    },
+   
     
     // 删除
     del : function(id) {

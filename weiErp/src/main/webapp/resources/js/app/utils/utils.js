@@ -37,6 +37,32 @@ var myUtil = {
         if(status == -2) {
             location = "pc";
         }
-    }
+    },
+    
+    // 监听翻页事件
+    listenChangePage : function(callback) {
+        
+        // 上一页
+        $("#prevPage").click(function() {
+            
+            // 后台page+1，所以这里要-2
+            var page = parseInt($(this).attr("page")) - 2;
+            
+            if(callback) {
+                callback(page);
+            }
+        });
+        
+        // 下一页
+        $("#nextPage").click(function() {
+           
+            // 后台page+1
+            page = $(this).attr("page");
+            
+            if(callback) {
+                callback(page);
+            }            
+        });
+    },
 };
 

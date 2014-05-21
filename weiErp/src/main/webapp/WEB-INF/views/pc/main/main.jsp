@@ -49,7 +49,7 @@
 				      	</h4>
                     </div>
                     <div id="collapseOne1" class="panel-collapse in">
-                        <div class="panel-body" url="pc/busi/query/list" name="submenu" style="cursor: pointer;">
+                        <div class="panel-body" url="pc/consumer/list" name="submenu" style="cursor: pointer;">
                                                                             会员列表
                         </div>
                         <div class="panel-body" url="pc/record/riseRecord" name="submenu" style="cursor: pointer;">
