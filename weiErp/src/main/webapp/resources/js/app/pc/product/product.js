@@ -97,6 +97,11 @@ var product = {
             return false;
         }
         
+        if(model.shareCash == "" || !isFinite(model.shareCash)) {
+            myUtil.bsAlert("分享金不能为空，且必须为数字", 3);
+            return false;
+        }
+        
         return true;
     },
     
@@ -111,6 +116,7 @@ var product = {
             name : $("#editName").val(),
             standard : $("#editStandard").val(),
             price : $("#editPrice").val(),
+            shareCash : $("#editShareCash").val()
         };
         
         var mainImage = $("#mainImgTd").children("img").attr("src");

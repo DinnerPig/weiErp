@@ -37,6 +37,10 @@ public class ProductParser {
 			product.setPrice(json.getDouble("price"));
 		}
 		
+		if(json.has("shareCash")) {
+			product.setShareCash(json.getDouble("shareCash"));
+		}
+		
 		if(json.has("standard")) {
 			product.setStandard(json.getString("standard"));
 		}

@@ -10,6 +10,7 @@
 		<th>名称</th>
 		<th>规格</th>
 		<th>单价</th>
+		<th>分享金</th>
 		<th>图片</th>
 		<th>描述</th>
 		<th>操作</th>
@@ -25,6 +26,7 @@
 			<td>${product.name}</td>
 			<td>${product.standard}</td>
 			<td>${product.price}</td>
+			<td>${product.shareCash}</td>
 			<td>
 				<c:forEach items="${product.images}" var="image">
 					<img src="${image.url}?imageView/1/w/50/h/50" onclick="product.showBigImg(this)">

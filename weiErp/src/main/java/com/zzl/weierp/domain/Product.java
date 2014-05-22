@@ -46,4 +46,8 @@ public class Product {
     /**
      */
     private String mainImage;
+
+    /**
+     */
+    private double shareCash;
 }

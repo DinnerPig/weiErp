@@ -227,3 +227,8 @@ finder list
 finder add --finderName findConsumersBySerialEquals
 quit
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-21 23:06:45
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-22 13:18:32
+focus --class ~.domain.Product
+field number --fieldName shareCash --type double
+quit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-22 13:37:42

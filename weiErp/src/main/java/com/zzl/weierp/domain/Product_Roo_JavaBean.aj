@@ -74,4 +74,12 @@ privileged aspect Product_Roo_JavaBean {
         this.mainImage = mainImage;
     }
     
+    public double Product.getShareCash() {
+        return this.shareCash;
+    }
+    
+    public void Product.setShareCash(double shareCash) {
+        this.shareCash = shareCash;
+    }
+    
 }

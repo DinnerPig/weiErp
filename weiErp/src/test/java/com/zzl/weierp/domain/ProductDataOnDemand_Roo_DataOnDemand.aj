@@ -34,6 +34,7 @@ privileged aspect ProductDataOnDemand_Roo_DataOnDemand {
         setName(obj, index);
         setPrice(obj, index);
         setSerial(obj, index);
+        setShareCash(obj, index);
         setStandard(obj, index);
         return obj;
     }
@@ -61,6 +62,11 @@ privileged aspect ProductDataOnDemand_Roo_DataOnDemand {
     public void ProductDataOnDemand.setSerial(Product obj, int index) {
         String serial = "serial_" + index;
         obj.setSerial(serial);
+    }
+    
+    public void ProductDataOnDemand.setShareCash(Product obj, int index) {
+        double shareCash = new Integer(index).doubleValue();
+        obj.setShareCash(shareCash);
     }
     
     public void ProductDataOnDemand.setStandard(Product obj, int index) {

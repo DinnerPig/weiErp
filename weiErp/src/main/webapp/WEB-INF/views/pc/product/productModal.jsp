@@ -65,6 +65,10 @@
          			<td><input type="text" class="form-control" id="editPrice" value="${product.price}"></td>
          		</tr>
          		<tr>
+         			<td>分享金</td>
+         			<td><input type="text" class="form-control" id="editShareCash" value="${product.shareCash}"></td>
+         		</tr>
+         		<tr>
                     <td>照片</td>
                     <td>
                         <span style="display:none;">上传中......<i class="fa fa-refresh fa-spin"></i></span>
