@@ -10,9 +10,8 @@
 		<th>名称</th>
 		<th>规格</th>
 		<th>单价</th>
+		<th>优惠价</th>
 		<th>分享金</th>
-		<th>图片</th>
-		<th>描述</th>
 		<th>操作</th>
 	</tr>
 	<c:forEach items="${products}" var="product" varStatus="idx">
@@ -21,21 +20,16 @@
 			<td>${product.serial}</td>
 			<td>${product.type.name}</td>
 			<td>
-				<img alt="" src="${product.mainImage}?imageView/1/w/50/h/50" onclick="product.showBigImg(this)">
+				<img alt="" src="${product.mainImage}?imageView/1/w/50/h/50" onclick="product.showBigImg(this)" class="my-mainSmImg">
 			</td>
 			<td>${product.name}</td>
 			<td>${product.standard}</td>
 			<td>${product.price}</td>
+			<td>${product.preferPrice}</td>
 			<td>${product.shareCash}</td>
 			<td>
-				<c:forEach items="${product.images}" var="image">
-					<img src="${image.url}?imageView/1/w/50/h/50" onclick="product.showBigImg(this)">
-				</c:forEach>
-			</td>
-			<td>${product.description}</td>
-			<td>
-				<button class="btn btn-success" title="修改" onclick="product.modal(${product.id})"><i class="fa fa-pencil"></i></button>
-			    <button class="btn btn-danger" title="删除" onclick="product.del(${product.id}, this)"><i class="fa fa-trash-o"></i></button>
+				<button class="btn btn-success btn-sm" title="修改" onclick="product.modal(${product.id})"><i class="fa fa-pencil"></i></button>
+			    <button class="btn btn-danger btn-sm" title="删除" onclick="product.del(${product.id}, this)"><i class="fa fa-trash-o"></i></button>
 			</td>
 		</tr>
 	</c:forEach>

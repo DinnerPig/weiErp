@@ -2,11 +2,15 @@ package com.zzl.weierp.domain;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
 import org.springframework.roo.addon.tostring.RooToString;
+
 import javax.persistence.ManyToOne;
+
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 @RooJavaBean
 @RooToString
@@ -15,6 +19,7 @@ public class Product {
 
     /**
      */
+	@NotNull
     private String name;
 
     /**
@@ -23,6 +28,7 @@ public class Product {
 
     /**
      */
+    @NotNull
     private double price;
 
     /**
@@ -36,6 +42,7 @@ public class Product {
 
     /**
      */
+    @NotNull
     private String serial;
 
     /**
@@ -49,5 +56,11 @@ public class Product {
 
     /**
      */
+    @NotNull
     private double shareCash;
+
+    /**
+     */
+    @NotNull
+    private double preferPrice;
 }

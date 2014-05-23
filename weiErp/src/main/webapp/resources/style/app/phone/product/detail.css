@@ -11,7 +11,7 @@
 	background: none repeat scroll 0 0 #F5F5F5;
 	margin: auto;
 	text-align: center;
-	width: 300px;
+	width: 320px;
 }
 
 .my_params ul {
@@ -51,7 +51,7 @@
 }
 
 .my_detailBlock {
-	width: 300px;
+	width: 320px;
 	position: relative;
 	margin: auto;
 	overflow: hidden;

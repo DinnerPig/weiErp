@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.zzl.weierp.common.utils.SessionUtil;
-import com.zzl.weierp.domain.Busi;
 import com.zzl.weierp.domain.Product;
 import com.zzl.weierp.domain.ProductType;
 import com.zzl.weierp.service.phone.product.PhoneProductService;
@@ -89,7 +88,7 @@ public class PhoneProductController {
 
 		// 2.query page
 		model.addAttribute("products", productService.queryList(model, keyword, page, size, typeId));
-
+			
 		return "phone/product/productList";
 	}
 	

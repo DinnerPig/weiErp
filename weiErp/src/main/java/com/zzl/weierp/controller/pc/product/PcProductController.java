@@ -35,13 +35,6 @@ public class PcProductController {
 	@RequestMapping(value = "/page", method = RequestMethod.GET)
 	public String page(Model model, HttpSession session) {
 
-		// 1.check session
-//		Long busiId = (Long) session.getAttribute("busiId");
-//		if (null == busiId) {
-//			return "common/timeout";
-//		}
-
-		// 2.query productTypes
 		model.addAttribute("types", ProductType.findAllProductTypes());
 
 		return "pc/product/product";
@@ -57,8 +50,6 @@ public class PcProductController {
 	@RequestMapping(value = "/modal", method = RequestMethod.GET)
 	public String modal(Model model, HttpSession session,
 			@RequestParam(required = false) Long id) {
-
-		// 1.check session
 
 		// 2.query product
 		Product product = null;
@@ -84,12 +75,6 @@ public class PcProductController {
 			@RequestParam(required = false) Integer size,
 			@RequestParam(required = false) String keyword) {
 
-		// 1.check session
-//		Long busiId = (Long) session.getAttribute("busiId");
-//		if (null == busiId) {
-//			return "common/timeout";
-//		}
-
 		// 2.query products
 		model.addAttribute("products", pcProductService.queryList(model, keyword, page, size, typeId));
 
@@ -99,12 +84,6 @@ public class PcProductController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	@ResponseBody
 	public String save(Model model, HttpSession session, @RequestBody String body) {
-
-		// 1.check session
-//		Long busiId = (Long) session.getAttribute("busiId");
-//		if (null == busiId) {
-//			return "common/timeout";
-//		}
 
 		// 2.save product
 		return pcProductService.save(body);

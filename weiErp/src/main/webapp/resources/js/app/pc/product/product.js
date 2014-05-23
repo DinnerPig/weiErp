@@ -55,28 +55,26 @@ var product = {
     
     // 保存
     save : function(model) {
-        if(product.check(model)) {
-            $("#pcLoading").show();
-            $.ajax({
-                type: "POST",
-                url: "pc/product/save",
-                data: JSON.stringify(model),
-                dataType: "json",
-                contentType: "application/json;charset=utf-8",
-                success: function(result){
-                    $("#pcLoading").hide();
-                    if(result.status == 1) {
-                        $("#productModal").modal("hide");
-                        myUtil.bsAlert("保存成功", 1);
-                        product.queryList();
-                    }
-                    else {
-                        myUtil.bsAlert("保存失败", 2);
-                    }
-            
+        $("#pcLoading").show();
+        $.ajax({
+            type: "POST",
+            url: "pc/product/save",
+            data: JSON.stringify(model),
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            success: function(result){
+                $("#pcLoading").hide();
+                if(result.status == 1) {
+                    $("#productModal").modal("hide");
+                    myUtil.bsAlert("保存成功", 1);
+                    product.queryList();
                 }
-            });
-        }
+                else {
+                    myUtil.bsAlert("保存失败", 2);
+                }
+        
+            }
+        });
     },
     
     // 校验
@@ -94,6 +92,11 @@ var product = {
         
         if(model.price == "" || !isFinite(model.price)) {
             myUtil.bsAlert("单价不能为空，且必须为数字", 3);
+            return false;
+        }
+        
+        if(model.preferPrice == "" || !isFinite(model.preferPrice)) {
+            myUtil.bsAlert("优惠价不能为空，且必须为数字", 3);
             return false;
         }
         
@@ -116,6 +119,7 @@ var product = {
             name : $("#editName").val(),
             standard : $("#editStandard").val(),
             price : $("#editPrice").val(),
+            preferPrice : $("#editPreferPrice").val(),
             shareCash : $("#editShareCash").val()
         };
         
@@ -136,7 +140,10 @@ var product = {
         });
         model.images = images;
         
-        product.save(model);
+        // 校验通过后保存
+        if(product.check(model)) {
+            product.save(model);
+        }
     },
     
     // 监听翻页事件

@@ -102,6 +102,7 @@ public class PcProductService {
 			oriProduct.setImages(images);
 			oriProduct.setName(product.getName());
 			oriProduct.setPrice(product.getPrice());
+			oriProduct.setPreferPrice(product.getPreferPrice());
 			oriProduct.setShareCash(product.getShareCash());
 			oriProduct.setSerial(product.getSerial());
 			oriProduct.setStandard(product.getStandard());

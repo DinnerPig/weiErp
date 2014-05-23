@@ -10,11 +10,40 @@
 
 		<div class="my_params">
 			<ul>
-				<li ontouchstart=""><span class="my_leftParam">名称</span> <span>${product.name}</span>
+				<li ontouchstart="">
+					<span class="my_leftParam">名称</span> <span>${product.name}</span>
 				</li>
-				<li ontouchstart=""><span class="my_leftParam">单价</span> <span>${product.price}</span>
+				<li ontouchstart="">
+					<span class="my_leftParam">单价</span> <span>${product.price}</span>
 				</li>
-				<li ontouchstart=""><span class="my_leftParam">规格</span> <span>${product.standard}</span>
+				<li ontouchstart="">
+					<span class="my_leftParam">优惠价</span> 
+					<span>
+						<c:choose>
+							<c:when test="${sessionScope.prefer}">
+								${product.preferPrice}
+							</c:when>
+							<c:otherwise>
+								不可见
+							</c:otherwise>
+						</c:choose>
+					</span>
+				</li>
+				<li ontouchstart="">
+					<span class="my_leftParam">分享金</span> 
+					<span>
+						<c:choose>
+							<c:when test="${sessionScope.share}">
+								${product.shareCash}
+							</c:when>
+							<c:otherwise>
+								不可见
+							</c:otherwise>
+						</c:choose>
+					</span>
+				</li>
+				<li ontouchstart="">
+					<span class="my_leftParam">规格</span> <span>${product.standard}</span>
 				</li>
 			</ul>
 		</div>

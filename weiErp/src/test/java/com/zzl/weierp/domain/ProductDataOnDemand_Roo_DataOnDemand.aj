@@ -32,6 +32,7 @@ privileged aspect ProductDataOnDemand_Roo_DataOnDemand {
         setDescription(obj, index);
         setMainImage(obj, index);
         setName(obj, index);
+        setPreferPrice(obj, index);
         setPrice(obj, index);
         setSerial(obj, index);
         setShareCash(obj, index);
@@ -52,6 +53,11 @@ privileged aspect ProductDataOnDemand_Roo_DataOnDemand {
     public void ProductDataOnDemand.setName(Product obj, int index) {
         String name = "name_" + index;
         obj.setName(name);
+    }
+    
+    public void ProductDataOnDemand.setPreferPrice(Product obj, int index) {
+        double preferPrice = new Integer(index).doubleValue();
+        obj.setPreferPrice(preferPrice);
     }
     
     public void ProductDataOnDemand.setPrice(Product obj, int index) {

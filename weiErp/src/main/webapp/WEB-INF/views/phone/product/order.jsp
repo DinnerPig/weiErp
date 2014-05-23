@@ -8,13 +8,31 @@
 	<table class="table table-bordered my_table">
 		<tr>
 			<th>名称</th>
-			<th>单价</th>
+			<th>
+				<c:choose>
+					<c:when test="${sessionScope.prefer}">
+						优惠价
+					</c:when>
+					<c:otherwise>
+						原价
+					</c:otherwise>
+				</c:choose>
+			</th>
 			<th>数量</th>
 		</tr>
 		<c:forEach items="${products}" var="product">
 			<tr name="product" pid="${product.id}">
 				<td name="name">${product.name}</td>
-				<td name="price">${product.price}</td>
+				<td name="price">
+					<c:choose>
+						<c:when test="${sessionScope.prefer}">
+							${product.preferPrice}
+						</c:when>
+						<c:otherwise>
+							${product.price}
+						</c:otherwise>
+					</c:choose>
+				</td>
 				<td><input class="form-control" type="tel" value="${product.amount}" name="amount"></td>
 			</tr>
 		</c:forEach>

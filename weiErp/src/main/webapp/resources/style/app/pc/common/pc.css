@@ -1,3 +1,12 @@
+/* 
+图片
+*/
+
+/* 图片*/
+.my-mainSmImg {
+	border: 3px solid #eee;
+}
+
 .my_pcLoading {
     background: none repeat scroll 0 0 rgba(255, 255, 255, 0.2);
     height: 100%;

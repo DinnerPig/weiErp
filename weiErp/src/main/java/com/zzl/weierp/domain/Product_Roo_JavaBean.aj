@@ -82,4 +82,12 @@ privileged aspect Product_Roo_JavaBean {
         this.shareCash = shareCash;
     }
     
+    public double Product.getPreferPrice() {
+        return this.preferPrice;
+    }
+    
+    public void Product.setPreferPrice(double preferPrice) {
+        this.preferPrice = preferPrice;
+    }
+    
 }

@@ -21,6 +21,7 @@ import com.zzl.weierp.common.utils.WebUtil;
 import com.zzl.weierp.domain.consumer.Consumer;
 import com.zzl.weierp.domain.consumer.ConsumerBank;
 import com.zzl.weierp.domain.consumer.ConsumerDetail;
+import com.zzl.weierp.domain.manager.Manager;
 import com.zzl.weierp.domain.record.RiseRecord;
 
 @Controller
@@ -55,7 +56,12 @@ public class PhoneConsumerController {
 			
 			// 分享人编号不存在
 			if(null == list || list.isEmpty()) {
-				return WebUtil.toJsonString(StatusCode.STATUS_NOT_EXIST);
+				
+				// 判断分享编号是否为管理员编号
+				List<Manager> managers = Manager.findManagersBySerialEquals(shareSerial).getResultList();
+				if(null == managers || managers.isEmpty()) {
+					return WebUtil.toJsonString(StatusCode.STATUS_NOT_EXIST);
+				}
 			}
 			
 			// 判断用户是否重名

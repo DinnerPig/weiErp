@@ -45,7 +45,7 @@
                 </tr>
                 <tr>
                 	<td colspan="2" id="mainImgTd">
-                		<img src="${product.mainImage}?imageView/1/w/50/h/50">
+                		<img src="${product.mainImage}?imageView/1/w/50/h/50" class="my-mainSmImg">
                 	</td>
                 </tr>
          		<tr>
@@ -65,6 +65,10 @@
          			<td><input type="text" class="form-control" id="editPrice" value="${product.price}"></td>
          		</tr>
          		<tr>
+         			<td>优惠价</td>
+         			<td><input type="text" class="form-control" id="editPreferPrice" value="${product.preferPrice}"></td>
+         		</tr>
+         		<tr>
          			<td>分享金</td>
          			<td><input type="text" class="form-control" id="editShareCash" value="${product.shareCash}"></td>
          		</tr>
@@ -79,7 +83,7 @@
                 	<td colspan="2" id="imgTd">
                 		<c:forEach items="${product.images}" var="image">
                 			<div class="my_imgList">
-		                        <img src="${image.url}?imageView/1/w/50/h/50">
+		                        <img src="${image.url}?imageView/1/w/50/h/50" class="my-mainSmImg">
                 				<button class="btn btn-info my_hoverDelBtn" onclick="product.delImg(this)"><i class="fa fa-trash-o"></i></button>
                 			</div>
                     	</c:forEach>

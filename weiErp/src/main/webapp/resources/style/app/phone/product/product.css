@@ -4,7 +4,7 @@
 }
 
 .my_products {
-	width: 300px;
+	width: 320px;
 	margin: 5px auto;
 	text-align: center;
 }
@@ -29,8 +29,7 @@
 
 .my_products li {
 	display: block;
-	width: 300px;
-	height: 90px;
+	height: 140px;
 	border-bottom: 1px solid #aaa;
 	background: #fff;
 }
@@ -42,6 +41,7 @@
 	border: 5px solid #fff;
 	display: block;
 	float: left;
+	margin-top: 30px;
 }
 
 .my_products li:active {
