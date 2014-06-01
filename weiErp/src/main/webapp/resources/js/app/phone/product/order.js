@@ -15,7 +15,8 @@ var order = {
 	        $("tr[name=product]").each(function() {
 	            var product = {
 	                id : $(this).attr("pid"),
-	                amount : $(this).contents().find("input[name=amount]").val()
+	                amount : $(this).contents().find("input[name=amount]").val(),
+	                price : $(this).children("td[name=price]").html().trim()
 	            };
 	            products.push(product);
 	        });

@@ -9,6 +9,8 @@ public class ShopCarProduct {
 	private Integer amount;
 	
 	private Double price;
+	
+	private Double preferPrice;
 
 	public Long getId() {
 		return id;
@@ -40,6 +42,14 @@ public class ShopCarProduct {
 
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+
+	public Double getPreferPrice() {
+		return preferPrice;
+	}
+
+	public void setPreferPrice(Double preferPrice) {
+		this.preferPrice = preferPrice;
 	}
 	
 }

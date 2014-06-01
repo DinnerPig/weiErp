@@ -12,7 +12,7 @@ public interface IProductOrderService {
 	 * 创建订单
 	 * @param params
 	 * {
-	 * 	busiId:x, --- 经销商id
+	 * 	consumerId:x, --- 会员id
 	 * 	serial:x, --- 订单编号
 	 * 	address:x, --- 送货地址
 	 *	note:x, --- 备注（留言） 
@@ -20,7 +20,8 @@ public interface IProductOrderService {
 	 *  [
 	 *  	{
 	 *  		id:x, --- 产品id
-	 *  		amount:x, --- 产品数量 	
+	 *  		amount:x, --- 产品数量
+	 *  		price:x --- 产品 售价
 	 *  	},
 	 *  	...
 	 *  ]

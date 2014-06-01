@@ -11,6 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
+import com.zzl.weierp.domain.consumer.Consumer;
 
 @RooJavaBean
 @RooToString
@@ -37,11 +38,6 @@ public class ProductOrder {
 
     /**
      */
-    @ManyToOne
-    private Busi busi;
-
-    /**
-     */
     private int status;
 
     /**
@@ -52,4 +48,9 @@ public class ProductOrder {
     /**
      */
     private String expressSerial;
+
+    /**
+     */
+    @ManyToOne
+    private Consumer consumer;
 }

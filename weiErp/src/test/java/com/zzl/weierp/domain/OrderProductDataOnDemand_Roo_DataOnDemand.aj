@@ -35,6 +35,7 @@ privileged aspect OrderProductDataOnDemand_Roo_DataOnDemand {
         OrderProduct obj = new OrderProduct();
         setAmount(obj, index);
         setOutAmount(obj, index);
+        setPrice(obj, index);
         return obj;
     }
     
@@ -46,6 +47,11 @@ privileged aspect OrderProductDataOnDemand_Roo_DataOnDemand {
     public void OrderProductDataOnDemand.setOutAmount(OrderProduct obj, int index) {
         int outAmount = index;
         obj.setOutAmount(outAmount);
+    }
+    
+    public void OrderProductDataOnDemand.setPrice(OrderProduct obj, int index) {
+        double price = new Integer(index).doubleValue();
+        obj.setPrice(price);
     }
     
     public OrderProduct OrderProductDataOnDemand.getSpecificOrderProduct(int index) {

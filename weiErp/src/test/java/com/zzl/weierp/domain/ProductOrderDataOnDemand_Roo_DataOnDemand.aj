@@ -3,9 +3,9 @@
 
 package com.zzl.weierp.domain;
 
-import com.zzl.weierp.domain.BusiDataOnDemand;
 import com.zzl.weierp.domain.ProductOrder;
 import com.zzl.weierp.domain.ProductOrderDataOnDemand;
+import com.zzl.weierp.domain.consumer.ConsumerDataOnDemand;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -28,7 +28,7 @@ privileged aspect ProductOrderDataOnDemand_Roo_DataOnDemand {
     private List<ProductOrder> ProductOrderDataOnDemand.data;
     
     @Autowired
-    BusiDataOnDemand ProductOrderDataOnDemand.busiDataOnDemand;
+    ConsumerDataOnDemand ProductOrderDataOnDemand.consumerDataOnDemand;
     
     public ProductOrder ProductOrderDataOnDemand.getNewTransientProductOrder(int index) {
         ProductOrder obj = new ProductOrder();

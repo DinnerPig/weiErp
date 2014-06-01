@@ -4,19 +4,19 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.stereotype.Service;
-
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+
+import org.springframework.stereotype.Service;
 
 import com.zzl.weierp.common.globalConst.GlobalConst;
 import com.zzl.weierp.common.globalConst.StatusCode;
 import com.zzl.weierp.common.utils.JsonUtil;
 import com.zzl.weierp.common.utils.WebUtil;
-import com.zzl.weierp.domain.Busi;
 import com.zzl.weierp.domain.OrderProduct;
 import com.zzl.weierp.domain.Product;
 import com.zzl.weierp.domain.ProductOrder;
+import com.zzl.weierp.domain.consumer.Consumer;
 
 @Service
 public class ProductOrderService implements IProductOrderService {
@@ -37,7 +37,7 @@ public class ProductOrderService implements IProductOrderService {
 		}
 
 		Map<String, String> paramsMap = new HashMap<String, String>();
-		paramsMap.put("busiId", "Long");
+		paramsMap.put("consumerId", "Long");
 		paramsMap.put("serial", "String");
 		paramsMap.put("address", "String");
 		paramsMap.put("note", "String");
@@ -47,7 +47,7 @@ public class ProductOrderService implements IProductOrderService {
 
 		// parser params
 		JSONObject paramsObj = JSONObject.fromObject(params);
-		Long busiId = paramsObj.getLong("busiId");
+		Long consumerId = paramsObj.getLong("consumerId");
 		String serial = paramsObj.getString("serial");
 		String address = paramsObj.getString("address");
 		String note = paramsObj.getString("note");
@@ -57,9 +57,9 @@ public class ProductOrderService implements IProductOrderService {
 			return WebUtil.toJsonString(StatusCode.STATUS_INVALID_PARAMS);
 		}
 		
-		// query busi
-		Busi busi = Busi.findBusi(busiId);
-		if(null == busi) {
+		// 查询会员信息
+		Consumer consumer = Consumer.findConsumer(consumerId);
+		if(null == consumer) {
 			return WebUtil.toJsonString(StatusCode.STATUS_FAIL);
 		}
 		
@@ -68,20 +68,22 @@ public class ProductOrderService implements IProductOrderService {
 		order.setAddress(address);
 		order.setNote(note);
 		order.setCreateTime(new Date());
-		order.setBusi(busi);
 		order.setStatus(GlobalConst.ORDER_STATUS_TODO);
+		order.setConsumer(consumer);
 		
-		// persist order
+		// 持久化订单
 		order.persist();
 		
 		for(int i=0; i<products.size(); i++) {
 			OrderProduct product = new OrderProduct();
 			JSONObject obj = products.getJSONObject(i);
 			
-			// check params
+			// 检查产品参数
 			Map<String, String> productParamsMap = new HashMap<String, String>();
 			productParamsMap.put("id", "Long");
 			productParamsMap.put("amount", "Integer");
+			productParamsMap.put("price", "Double");
+			
 			if (!JsonUtil.checkParams(obj, productParamsMap)) {
 				return WebUtil.toJsonString(StatusCode.STATUS_INVALID_PARAMS);
 			}
@@ -93,6 +95,7 @@ public class ProductOrderService implements IProductOrderService {
 			
 			product.setAmount(obj.getInt("amount"));
 			product.setOutAmount(0);
+			product.setPrice(obj.getDouble("price"));
 			product.setProduct(productObj);
 			product.setProductOrder(order);
 			product.persist();

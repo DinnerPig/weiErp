@@ -53,7 +53,7 @@ public class PhoneOrderController {
 		
 		// pack query params
 		JSONObject params = JSONObject.fromObject(json);
-		params.put("busiId", userId);
+		params.put("consumerId", userId);
 		
 		return productOrderService.create(params.toString());
 	}
@@ -64,7 +64,7 @@ public class PhoneOrderController {
 	 * @param session
 	 * @return
 	 */
-	@RequestMapping(value = "/shopCar", method = RequestMethod.POST)
+	@RequestMapping(value = "/shopCar", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public String shopCar(@RequestParam Long productId, @RequestParam Integer amount, HttpSession session) {
 		

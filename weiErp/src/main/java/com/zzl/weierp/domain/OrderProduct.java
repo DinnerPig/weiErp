@@ -4,6 +4,7 @@ import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
 import org.springframework.roo.addon.tostring.RooToString;
 import javax.persistence.OneToOne;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 @RooJavaBean
 @RooToString
@@ -27,4 +28,9 @@ public class OrderProduct {
      */
     @ManyToOne
     private ProductOrder productOrder;
+
+    /**
+     */
+    @NotNull
+    private double price;
 }

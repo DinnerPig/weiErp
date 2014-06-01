@@ -72,6 +72,7 @@ public class HomeController {
 					Product temp = Product.findProduct(id);
 					product.setName(temp.getName());
 					product.setPrice(temp.getPrice());
+					product.setPreferPrice(temp.getPreferPrice());
 					
 					list.add(product);
 				}

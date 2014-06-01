@@ -254,3 +254,12 @@ quit
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-23 22:34:27
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-24 00:20:54
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-24 00:22:34
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-06-01 12:56:09
+focus --class ~.domain.OrderProduct
+field number --fieldName price --type double
+field number --fieldName price --type double --notNull 
+focus --class ~.domain.ProductOrder
+field reference --fieldName consumer --type ~.domain.consumer.Consumer --cardinality MANY_TO_ONE 
+quit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-06-01 13:08:25
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-06-01 13:09:30

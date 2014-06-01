@@ -41,4 +41,12 @@ privileged aspect OrderProduct_Roo_JavaBean {
         this.productOrder = productOrder;
     }
     
+    public double OrderProduct.getPrice() {
+        return this.price;
+    }
+    
+    public void OrderProduct.setPrice(double price) {
+        this.price = price;
+    }
+    
 }

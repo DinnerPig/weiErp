@@ -48,7 +48,7 @@ public class Consumer {
     private ConsumerDetail detail;
 
     /**
-     * 等级�?普�?会员�?分享会员
+     * 等级:1普通会员,2:分享会员
      */
     @NotNull
     private int degree = 1;

@@ -3,9 +3,9 @@
 
 package com.zzl.weierp.domain;
 
-import com.zzl.weierp.domain.Busi;
 import com.zzl.weierp.domain.OrderProduct;
 import com.zzl.weierp.domain.ProductOrder;
+import com.zzl.weierp.domain.consumer.Consumer;
 import java.util.Date;
 import java.util.Set;
 
@@ -43,14 +43,6 @@ privileged aspect ProductOrder_Roo_JavaBean {
         this.note = note;
     }
     
-    public Busi ProductOrder.getBusi() {
-        return this.busi;
-    }
-    
-    public void ProductOrder.setBusi(Busi busi) {
-        this.busi = busi;
-    }
-    
     public int ProductOrder.getStatus() {
         return this.status;
     }
@@ -73,6 +65,14 @@ privileged aspect ProductOrder_Roo_JavaBean {
     
     public void ProductOrder.setExpressSerial(String expressSerial) {
         this.expressSerial = expressSerial;
+    }
+    
+    public Consumer ProductOrder.getConsumer() {
+        return this.consumer;
+    }
+    
+    public void ProductOrder.setConsumer(Consumer consumer) {
+        this.consumer = consumer;
     }
     
 }
