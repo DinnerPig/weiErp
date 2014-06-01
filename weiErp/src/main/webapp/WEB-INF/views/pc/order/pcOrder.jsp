@@ -4,10 +4,10 @@
 <div class="row">
 	<div class="col-md-4">
 		经销商：
-		<select class="form-control" style="width:150px;display: inline-block;" id="busiId">
+		<select class="form-control" style="width:150px;display: inline-block;" id="consumerId">
 			<option value="">全部分类</option>
-			<c:forEach items="${busis}" var="busi">
-				<option value="${busi.id}">${busi.realname}</option>
+			<c:forEach items="${consumers}" var="consumer">
+				<option value="${consumer.id}">${consumer.detail.trueName}</option>
 			</c:forEach>
 		</select>
 	</div>

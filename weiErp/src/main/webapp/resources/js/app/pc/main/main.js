@@ -38,7 +38,7 @@ var main = {
                 // 订单
                 if(url === "pc/order/page") {
                     var params = {
-                            page : 0
+                        page : 0
                     };
                     
                     // 初始化订单全局状态

@@ -14,11 +14,11 @@ public class OrderRepository {
 
 	/**
 	 * 根据条件查询总记录数
-	 * @param busiId 经销商id
+	 * @param consumerId 会员id
 	 * @param keyword 关键字
 	 * @return
 	 */
-	public long count(Long busiId, String keyword, Integer status) {
+	public long count(Long consumerId, String keyword, Integer status) {
 		
 		// status cannot null
 		if(null == status) {
@@ -30,15 +30,15 @@ public class OrderRepository {
 		}
 		
 		String sql = "select count(*) from ProductOrder p where p.status = :status and p.serial like '%" + keyword + "%'";
-		if(null != busiId) {
-			sql += "and p.busi.id = :busiId";
+		if(null != consumerId) {
+			sql += "and p.consumer.id = :consumerId";
 		}
 		
 		Query query = ProductOrder.entityManager().createQuery(sql);
 		query.setParameter("status", status);
 		
-		if(null != busiId) {
-			query.setParameter("busiId", busiId);
+		if(null != consumerId) {
+			query.setParameter("consumerId", consumerId);
 		}
 		
 		return (Long) query.getSingleResult();
@@ -46,14 +46,14 @@ public class OrderRepository {
 	
 	/**
 	 * 分页查询
-	 * @param busiId 经销商id
+	 * @param consumerId 会员id
 	 * @param keyword 
 	 * @param page 页码
 	 * @param size 每页记录数
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public List<ProductOrder> queryList(Long busiId, String keyword, Integer page, Integer size, Integer status) {
+	public List<ProductOrder> queryList(Long consumerId, String keyword, Integer page, Integer size, Integer status) {
 		
 		// status cannot null
 		if(null == status) {
@@ -73,8 +73,8 @@ public class OrderRepository {
 		}
 		
 		String sql = "select p from ProductOrder p where p.status = :status and p.serial like '%" + keyword + "%'";
-		if(null != busiId) {
-			sql += " and p.busi.id = :busiId";
+		if(null != consumerId) {
+			sql += " and p.consumer.id = :consumerId";
 		}
 		
 		// order by date
@@ -83,8 +83,8 @@ public class OrderRepository {
 		Query query = ProductOrder.entityManager().createQuery(sql);
 		query.setParameter("status", status);
 		
-		if(null != busiId) {
-			query.setParameter("busiId", busiId);
+		if(null != consumerId) {
+			query.setParameter("consumerId", consumerId);
 		}
 		
 		query.setFirstResult(page * size);
@@ -95,16 +95,16 @@ public class OrderRepository {
 
 	/**
 	 * 根据条件查询所有订单
-	 * @param userId
+	 * @param consumerId
 	 * @param status
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public List<ProductOrder> queryAll(Long busiId, Integer status) {
+	public List<ProductOrder> queryAll(Long consumerId, Integer status) {
 		
-		Query query = ProductOrder.entityManager().createQuery("select p from ProductOrder p where p.status = :status and p.busi.id = :busiId order by p.createTime desc");
+		Query query = ProductOrder.entityManager().createQuery("select p from ProductOrder p where p.status = :status and p.consumer.id = :consumerId order by p.createTime desc");
 		query.setParameter("status", status);
-		query.setParameter("busiId", busiId);
+		query.setParameter("consumerId", consumerId);
 		return query.getResultList();
 	}
 }

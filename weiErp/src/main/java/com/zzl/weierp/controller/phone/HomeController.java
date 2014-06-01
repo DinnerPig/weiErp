@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.zzl.weierp.common.utils.SessionUtil;
-import com.zzl.weierp.domain.Busi;
 import com.zzl.weierp.domain.Product;
 import com.zzl.weierp.domain.ProductType;
 import com.zzl.weierp.domain.consumer.Consumer;
@@ -81,7 +80,7 @@ public class HomeController {
 			// set model
             model.addAttribute("orderSerial", "PD" + new Date().getTime());
 			model.addAttribute("products", list);
-			model.addAttribute("busi", Busi.findBusi(userId));
+			model.addAttribute("consumer", Consumer.findConsumer(userId));
 			
 			return "phone/product/order";
 		}

@@ -35,9 +35,9 @@ var order = {
             keyword : keyword,
         };
         
-        var busiId = $("#busiId").val();
-        if(busiId !== "") {
-            params.busiId = busiId;
+        var consumerId = $("#consumerId").val();
+        if(consumerId !== "") {
+            params.consumerId = consumerId;
         }
         
         // 查询

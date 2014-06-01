@@ -11,12 +11,12 @@
 				<td>${order.serial}</td>
 			</tr>
 			<tr>
-				<td>经销商：</td>
-				<td>${order.busi.realname}</td>
+				<td>会员：</td>
+				<td>${order.consumer.detail.trueName}</td>
 			</tr>
 			<tr>
 				<td>手机：</td>
-				<td>${order.busi.phone}</td>
+				<td>${order.consumer.detail.phone}</td>
 			</tr>
 			<tr>
 				<td>收货地址：</td>
@@ -44,9 +44,9 @@
 				<tr>
 					<td>${idx.count}</td>
 					<td>${orderProduct.product.name}</td>
-					<td>${orderProduct.product.price}</td>
+					<td>${orderProduct.price}</td>
 					<td>${orderProduct.amount}</td>
-					<td>${orderProduct.product.price * orderProduct.amount}&nbsp;元</td>
+					<td>${orderProduct.price * orderProduct.amount}&nbsp;元</td>
 				</tr>
 			</c:forEach>
 		</table>

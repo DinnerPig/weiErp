@@ -23,20 +23,20 @@ public class PcOrderService {
 	 * @param keyword
 	 * @param page
 	 * @param size
-	 * @param busiId 
+	 * @param consumerId 
 	 * @param status 1：未发货，2：已发货
 	 * @return
 	 */
-	public List<ProductOrder> queryList(Model model, String keyword, Integer page, Integer size, Long busiId, Integer status) {
+	public List<ProductOrder> queryList(Model model, String keyword, Integer page, Integer size, Long consumerId, Integer status) {
 		
 		// 1.query total number
-		long total = orderRepository.count(busiId, keyword, status);
+		long total = orderRepository.count(consumerId, keyword, status);
 
 		// 2.set page info
 		WebUtil.setPageInfo(model, total, page, size);
 		
 		// 3.execute query
-		return orderRepository.queryList(busiId, keyword, page, size, status);
+		return orderRepository.queryList(consumerId, keyword, page, size, status);
 	}
 
 	/**

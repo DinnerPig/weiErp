@@ -24,10 +24,10 @@
 		<table class="table">
 			<tr>
 				<td>订单号：${order.serial}</td>
-				<td>经销商：${order.busi.realname}</td>
+				<td>会员：${order.consumer.detail.realname}</td>
 			</tr>
 			<tr>
-				<td>手机：${order.busi.phone}</td>
+				<td>手机：${order.consumer.detail.phone}</td>
 				<td>收货地址：${order.address}</td>
 			</tr>
 			<tr>
@@ -49,9 +49,9 @@
 					<td>${idx.count}</td>
 					<th>${orderProduct.product.serial}</th>
 					<td>${orderProduct.product.name}</td>
-					<td>${orderProduct.product.price}</td>
+					<td>${orderProduct.price}</td>
 					<td>${orderProduct.amount}</td>
-					<td>${orderProduct.product.price * orderProduct.amount}&nbsp;元</td>
+					<td>${orderProduct.price * orderProduct.amount}&nbsp;元</td>
 				</tr>
 			</c:forEach>
 		</table>
